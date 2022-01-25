@@ -13,7 +13,7 @@ function App() {
 
   const onInputData = (inputData) => {
     //setIsDataEntered(true);
-    setInputArray(inputData.split(" "));
+    setInputArray(inputData.split(/\r?\n/g));
   };
   //if (isDataEntered) {
   let  Output = <OutputList outputArray={InputArray}/>;
