@@ -2,27 +2,41 @@ import React, { useState } from "react";
 import "./InputForm.css";
 
 const InputForm = (props) => {
-    const[inputString, setInputString] = useState("");
+  const title = "Sem patří blok textu:";
+  const parseButton = "Parsuj!";
+  const deleteButton = "Smazat oblast vstupu";
 
-    const inputTextSaveHandler = (event) => {
-        setInputString(event.target.value);
-    }
+  const [inputString, setInputString] = useState("");
 
-    const submitSaveHandler = (event) => {
-        event.preventDefault();
-        props.inputData(inputString);
-    }
-    const deleteHandler = () => {
-        setInputString("");
-    }
+  const inputTextSaveHandler = (event) => {
+    setInputString(event.target.value);
+  };
+
+  const submitSaveHandler = (event) => {
+    event.preventDefault();
+    props.inputData(inputString);
+  };
+  const deleteHandler = () => {
+    setInputString("");
+  };
 
   return (
-    <div>
+    <div className="input-window__form">
       <form onSubmit={submitSaveHandler}>
-        <label>Vloz text</label>
-        <textarea value={inputString} onChange={inputTextSaveHandler} />      
-      <button type="submit">Parsuj!</button>
-      <button type="button" onClick={deleteHandler}>Smaz</button>
+        <label className="input-window__label">{title}</label>
+        <textarea
+          className="area"
+          value={inputString}
+          onChange={inputTextSaveHandler}
+        />
+        <div className="input-window__actions">
+          <button className="btn" type="submit">
+            {parseButton}
+          </button>
+          <button className="btn" type="button" onClick={deleteHandler}>
+            {deleteButton}
+          </button>
+        </div>
       </form>
     </div>
   );

@@ -1,0 +1,10 @@
+.input-window__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-window__actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

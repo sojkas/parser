@@ -1,13 +1,21 @@
 import OutputForm from "./OutputForm";
 
 const OutputList = (props) => {
-    console.log("outputlist"+props.outputArray);
+    const items = [
+        {key: 1, item: ","},
+        {key: 2, item: ";"},
+        {key: 3, item: "-"},
+        {key: 4, item: "/"},
+        
+    ];
+    const outputTitle = "A tady nalezneme sparsovaný blok:"
+
   return (
     <div className="output-window">
-      <OutputForm OutputString={props.outputArray.join(";")} />
-      <OutputForm OutputString={props.outputArray.join("+")} />
-      <OutputForm OutputString={props.outputArray.join(",")} />
-      <OutputForm OutputString={props.outputArray.join("/")} />
+        <label>{outputTitle}</label>
+        {items.map((item)=> (
+            <OutputForm key={item.key} OutputString={props.outputArray.join(item.item)} />
+        ))}
     </div>
   );
 };

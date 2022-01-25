@@ -2,14 +2,37 @@
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 100%;
+  height: 85vh;
 }
 
 .input-window,
 .output-window {
+  flex-direction: column;
   text-align: center;
-  padding: 50px;
-  border: solid 2px;
+  padding: 50px 10px;
   width: 50%;
   height: 100%;
+}
+
+.area {
+  width: 45vw;
+  height: 10em;
+  margin: 20px 0px;
+}
+
+.btn {
+  margin: 0px 1em;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid black;
+  background-color: white;
+  box-shadow: 2px 1px grey;
+  border-radius: 5px;
+  animation: all 1s;
+}
+.btn:hover,
+.btn:active {
+  transform: scale(1.1);
+  background-color: indianred;
+  color: white;
 }
