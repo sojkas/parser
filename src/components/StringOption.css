@@ -1,0 +1,15 @@
+.select-box {
+    text-align: left;
+}
+
+.select-box label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+.select-box select {
+    margin-left: 20px;
+    padding: 0.5rem 3rem;
+    font-weight: bold;
+    border-radius: 6px;
+}

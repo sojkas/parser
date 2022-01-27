@@ -36,3 +36,8 @@
   background-color: indianred;
   color: white;
 }
+
+p {
+  font-weight: bold;
+  text-align: left;
+}

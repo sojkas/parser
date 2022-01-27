@@ -1,9 +1,11 @@
 import OutputForm from "./OutputForm";
 
 const OutputList = (props) => {
+  const fillStringData = props.selectedString;
+
   return (
-    <div className="output-window">
-      <OutputForm OutputString={props.outputArray.join(",")} />
+    <div>
+      <OutputForm OutputString={props.outputArray.join(fillStringData)} />
     </div>
   );
 };
