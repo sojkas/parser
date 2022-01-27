@@ -1,0 +1,16 @@
+.checkbox-all {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  margin-top: 0.5rem;
+  padding: 5px;
+}
+
+.checkbox-all p {
+  font-weight: bold;
+  margin-left: 0.5rem;
+}
+
+.checkbox-all input {
+    margin-top: 1.1rem;
+}

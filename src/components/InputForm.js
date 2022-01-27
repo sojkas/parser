@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./InputForm.css";
 
 const InputForm = (props) => {
@@ -6,12 +6,8 @@ const InputForm = (props) => {
   /* const parseButton = "Parsuj!";
   const deleteButton = "Smazat oblast vstupu"; */
 
-  const [inputString, setInputString] = useState("");
-
   const submitSaveHandler = (event) => {
-    setInputString(event.target.value);
-    event.preventDefault();
-    props.inputData(inputString);
+    props.inputData(event.target.value);
   };
   /* const deleteHandler = () => {
     setInputString("");
@@ -19,20 +15,12 @@ const InputForm = (props) => {
 
   return (
     <div className="input-window__form">
-        <p className="input-window__label">{title}</p>
-        <textarea
-          className="area"
-          value={inputString}
-          onChange={submitSaveHandler}
-        />
-        {/* <div className="input-window__actions">
-          <button className="btn" type="submit">
-            {parseButton}
-          </button>
-          <button className="btn" type="button" onClick={deleteHandler}>
-            {deleteButton}
-          </button>
-        </div> */}
+      <p className="input-window__label">{title}</p>
+      <textarea
+        className="area"
+        /* value={props.inputData} */
+        onChange={submitSaveHandler}
+      />
     </div>
   );
 };
