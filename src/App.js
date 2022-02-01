@@ -14,6 +14,7 @@ function App() {
 
   const onInputData = (inputData) => {
     setInputArray(inputData.split(selectedStringInput));
+    
     setOutputArray(inputData.split(selectedStringInput));
   };
 
@@ -23,7 +24,7 @@ function App() {
   const onSelectedOutputStringHandler = (selectedString) => {
     setSelectedStringOutput(selectedString);
   };
-  const isCheckedRemoveQuatationMark = (isChecked) => {
+  const isCheckedRemoveQuotationMark = (isChecked) => {
     if (isChecked) return prepareDataRemove(InputArray);
     setOutputArray(InputArray);
   };
@@ -31,12 +32,18 @@ function App() {
     if (outputArray.length > 0) {
       const newOutputArray = new Array([]);
       for (const element in outputArray) {
-        newOutputArray[element] = outputArray[element].slice(1, -1);
+        newOutputArray[element] = removeQuotationMarks(outputArray[element]);
       }
 
       setOutputArray(newOutputArray);
     }
   };
+  const removeQuotationMarks = (chars) => {
+    if (chars.length >0){
+      const newChars = chars.replaceAll('"', '');
+      return newChars;
+    }
+  }
 
   return (
     <div className="application">
@@ -49,7 +56,7 @@ function App() {
         />
         <Checkbox
           title={titleRemoveQuatationMarks}
-          isChecked={isCheckedRemoveQuatationMark}
+          isChecked={isCheckedRemoveQuotationMark}
         />
       </div>
       <div className="output-window">
