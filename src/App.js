@@ -10,12 +10,18 @@ function App() {
   const [outputArray, setOutputArray] = useState([]);
   const [selectedStringInput, setSelectedStringInput] = useState(/\r?\n/g);
   const [selectedStringOutput, setSelectedStringOutput] = useState(",");
+  const [isCheckedRemoveQuotationMark, setIsCheckedRemoveQuotationMark] =
+    useState(false);
+  const [isCheckedAddQuotationMark, setIsCheckedAddQuotationMark] =
+    useState(false);
   const titleRemoveQuatationMarks = "Odebrat uvozovky";
+  const titleAddQuatationMarks = "Přídat do výstupu uvozovky";
 
   const onInputData = (inputData) => {
     setInputArray(inputData.split(selectedStringInput));
-    
-    setOutputArray(inputData.split(selectedStringInput));
+    if (isCheckedRemoveQuotationMark) return prepareDataRemove(InputArray);
+    if (isCheckedAddQuotationMark) return prepareDataAdd(InputArray);
+    setOutputArray(InputArray);
   };
 
   const onSelectedInputStringHandler = (selectedString) => {
@@ -24,10 +30,17 @@ function App() {
   const onSelectedOutputStringHandler = (selectedString) => {
     setSelectedStringOutput(selectedString);
   };
-  const isCheckedRemoveQuotationMark = (isChecked) => {
-    if (isChecked) return prepareDataRemove(InputArray);
-    setOutputArray(InputArray);
+
+  const isCheckedRemoveQuotationMarkHandler = (isChecked) => {
+    setIsCheckedRemoveQuotationMark(isChecked);
+    if (isChecked) setIsCheckedAddQuotationMark(!isChecked);
   };
+
+  const isCheckedAddQuotationMarkHandler = (isChecked) => {
+    setIsCheckedAddQuotationMark(isChecked);
+    if (isChecked) setIsCheckedRemoveQuotationMark(!isChecked);
+  };
+
   const prepareDataRemove = (outputArray) => {
     if (outputArray.length > 0) {
       const newOutputArray = new Array([]);
@@ -38,12 +51,31 @@ function App() {
       setOutputArray(newOutputArray);
     }
   };
+
+  const prepareDataAdd = (outputArray) => {
+    if (outputArray.length > 0) {
+      const newOutputArray = new Array([]);
+      for (const element in outputArray) {
+        newOutputArray[element] = addQuotationMarks(outputArray[element]);
+      }
+
+      setOutputArray(newOutputArray);
+    }
+  };
+
   const removeQuotationMarks = (chars) => {
-    if (chars.length >0){
-      const newChars = chars.replaceAll('"', '');
+    if (chars.length > 0) {
+      const newChars = chars.replaceAll('"', "");
       return newChars;
     }
-  }
+  };
+
+  const addQuotationMarks = (chars) => {
+    if (chars.length > 0) {
+      const newChars = '"' + chars + '"';
+      return newChars;
+    }
+  };
 
   return (
     <div className="application">
@@ -54,10 +86,19 @@ function App() {
           selectedString={selectedStringInput}
           onSelectedString={onSelectedInputStringHandler}
         />
-        <Checkbox
-          title={titleRemoveQuatationMarks}
-          isChecked={isCheckedRemoveQuotationMark}
-        />
+        <div className="action-buttons">
+          {" "}
+          <Checkbox
+            title={titleRemoveQuatationMarks}
+            isChecked={isCheckedRemoveQuotationMarkHandler}
+            checked={isCheckedRemoveQuotationMark}
+          />
+          <Checkbox
+            title={titleAddQuatationMarks}
+            isChecked={isCheckedAddQuotationMarkHandler}
+            checked={isCheckedAddQuotationMark}
+          />
+        </div>
       </div>
       <div className="output-window">
         <OutputList

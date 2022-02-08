@@ -41,3 +41,8 @@ p {
   font-weight: bold;
   text-align: left;
 }
+
+.action-buttons {
+  display: flex;
+  flex-direction: row;
+}
