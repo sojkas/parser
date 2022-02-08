@@ -15,9 +15,9 @@ function App() {
   const [isCheckedAddQuotationMark, setIsCheckedAddQuotationMark] =
     useState(false);
   const titleRemoveQuatationMarks = "Odebrat uvozovky";
-  const titleAddQuatationMarks = "Přídat do výstupu uvozovky";
+  const titleAddQuatationMarks = "Přídat uvozovky";
   const [isAnyChange, setIsAnyChange] = useState(false);
-  
+
   const onInputData = (inputData) => {
     setInputArray(inputData.split(selectedStringInput));
     setIsAnyChange(true);
@@ -66,8 +66,6 @@ function App() {
     }
   };
 
-
-
   const removeQuotationMarks = (chars) => {
     if (chars.length > 0) {
       const newChars = chars.replaceAll('"', "");
@@ -93,23 +91,15 @@ function App() {
     <div className="application">
       <div className="input-window">
         <InputForm inputData={onInputData} />
-
         <StringOption
           selectedString={selectedStringInput}
           onSelectedString={onSelectedInputStringHandler}
         />
-        <div className="action-buttons">
-          <Checkbox
-            title={titleRemoveQuatationMarks}
-            isChecked={isCheckedRemoveQuotationMarkHandler}
-            checked={isCheckedRemoveQuotationMark}
-          />
-          <Checkbox
-            title={titleAddQuatationMarks}
-            isChecked={isCheckedAddQuotationMarkHandler}
-            checked={isCheckedAddQuotationMark}
-          />
-        </div>
+        <Checkbox
+          title={titleRemoveQuatationMarks}
+          isChecked={isCheckedRemoveQuotationMarkHandler}
+          checked={isCheckedRemoveQuotationMark}
+        />
       </div>
       <div className="output-window">
         <OutputList
@@ -119,6 +109,11 @@ function App() {
         <StringOption
           selectedString={selectedStringOutput}
           onSelectedString={onSelectedOutputStringHandler}
+        />
+        <Checkbox
+          title={titleAddQuatationMarks}
+          isChecked={isCheckedAddQuotationMarkHandler}
+          checked={isCheckedAddQuotationMark}
         />
       </div>
     </div>
