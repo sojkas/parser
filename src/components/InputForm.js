@@ -9,17 +9,17 @@ const InputForm = (props) => {
   const submitSaveHandler = (event) => {
     props.inputData(event.target.value);
   };
-  /* const deleteHandler = () => {
-    setInputString("");
-  }; */
+  const submitOnPasteSaveHandler = (event) => {
+    props.inputData(event.clipboardData.getData('text'));
+  }
 
   return (
     <div className="input-window__form">
       <p className="input-window__label">{title}</p>
       <textarea
         className="area"
-        /* value={props.inputData} */
         onChange={submitSaveHandler}
+        onPaste={submitOnPasteSaveHandler}
       />
     </div>
   );
