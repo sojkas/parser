@@ -16,29 +16,32 @@ function App() {
     useState(false);
   const titleRemoveQuatationMarks = "Odebrat uvozovky";
   const titleAddQuatationMarks = "Přídat do výstupu uvozovky";
-
+  const [isAnyChange, setIsAnyChange] = useState(false);
+  
   const onInputData = (inputData) => {
     setInputArray(inputData.split(selectedStringInput));
-    if (isCheckedRemoveQuotationMark) return prepareDataRemove(InputArray);
-    if (isCheckedAddQuotationMark) return prepareDataAdd(InputArray);
-    setOutputArray(InputArray);
+    setIsAnyChange(true);
   };
 
   const onSelectedInputStringHandler = (selectedString) => {
     setSelectedStringInput(selectedString);
+    setIsAnyChange(true);
   };
   const onSelectedOutputStringHandler = (selectedString) => {
     setSelectedStringOutput(selectedString);
+    setIsAnyChange(true);
   };
 
   const isCheckedRemoveQuotationMarkHandler = (isChecked) => {
     setIsCheckedRemoveQuotationMark(isChecked);
     if (isChecked) setIsCheckedAddQuotationMark(!isChecked);
+    setIsAnyChange(true);
   };
 
   const isCheckedAddQuotationMarkHandler = (isChecked) => {
     setIsCheckedAddQuotationMark(isChecked);
     if (isChecked) setIsCheckedRemoveQuotationMark(!isChecked);
+    setIsAnyChange(true);
   };
 
   const prepareDataRemove = (outputArray) => {
@@ -63,6 +66,8 @@ function App() {
     }
   };
 
+
+
   const removeQuotationMarks = (chars) => {
     if (chars.length > 0) {
       const newChars = chars.replaceAll('"', "");
@@ -76,6 +81,13 @@ function App() {
       return newChars;
     }
   };
+
+  if (isAnyChange) {
+    setIsAnyChange(false);
+    if (isCheckedRemoveQuotationMark) return prepareDataRemove(InputArray);
+    if (isCheckedAddQuotationMark) return prepareDataAdd(InputArray);
+    setOutputArray(InputArray);
+  }
 
   return (
     <div className="application">
