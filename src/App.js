@@ -87,7 +87,6 @@ function App() {
           onSelectedString={onSelectedInputStringHandler}
         />
         <div className="action-buttons">
-          {" "}
           <Checkbox
             title={titleRemoveQuatationMarks}
             isChecked={isCheckedRemoveQuotationMarkHandler}
