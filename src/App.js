@@ -105,10 +105,10 @@ function App() {
   if (isAnyChange) {
     setIsAnyChange(false);
     let newArray = InputArray;
-    if (isCheckedRemoveSpace) newArray = prepareDataTrim(newArray);
     if (isCheckedRemoveQuotationMark)
       newArray = prepareDataRemove(newArray, '"');
     if (isCheckedAddQuotationMark) newArray = prepareDataAdd(newArray);
+    if (isCheckedRemoveSpace) newArray = prepareDataTrim(newArray);
 
     setOutputArray(newArray);
   }
