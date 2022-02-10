@@ -19,7 +19,7 @@ function App() {
 
   const titleRemoveQuatationMarks = "Odebrat uvozovky";
   const titleAddQuatationMarks = "Přídat uvozovky";
-  const titleSpace = "Odebrat mezery";
+  const titleSpace = "Otrimovat";
 
   const onInputData = (inputData) => {
     setInputArray(inputData.split(selectedStringInput));
