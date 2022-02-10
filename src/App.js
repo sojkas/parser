@@ -14,9 +14,12 @@ function App() {
     useState(false);
   const [isCheckedAddQuotationMark, setIsCheckedAddQuotationMark] =
     useState(false);
+  const [isCheckedRemoveSpace, setIsCheckedRemoveSpace] = useState(false);
+  const [isAnyChange, setIsAnyChange] = useState(false);
+
   const titleRemoveQuatationMarks = "Odebrat uvozovky";
   const titleAddQuatationMarks = "Přídat uvozovky";
-  const [isAnyChange, setIsAnyChange] = useState(false);
+  const titleSpace = "Odebrat mezery";
 
   const onInputData = (inputData) => {
     setInputArray(inputData.split(selectedStringInput));
@@ -44,15 +47,24 @@ function App() {
     setIsAnyChange(true);
   };
 
-  const prepareDataRemove = (outputArray) => {
+  const isCheckedRemoveSpaceHandler = (isChecked) => {
+    setIsCheckedRemoveSpace(isChecked);
+    setIsAnyChange(true);
+  };
+
+  const prepareDataRemove = (outputArray, removeChar) => {
     if (outputArray.length > 0) {
       const newOutputArray = new Array([]);
       for (const element in outputArray) {
-        newOutputArray[element] = removeQuotationMarks(outputArray[element]);
+        newOutputArray[element] = removeSelectedChar(
+          outputArray[element],
+          removeChar
+        );
       }
-
-      setOutputArray(newOutputArray);
+      return newOutputArray;
+      /* setOutputArray(newOutputArray); */
     }
+    return outputArray;
   };
 
   const prepareDataAdd = (outputArray) => {
@@ -61,14 +73,15 @@ function App() {
       for (const element in outputArray) {
         newOutputArray[element] = addQuotationMarks(outputArray[element]);
       }
-
-      setOutputArray(newOutputArray);
+      return newOutputArray;
+      /* setOutputArray(newOutputArray); */
     }
+    return outputArray;
   };
 
-  const removeQuotationMarks = (chars) => {
+  const removeSelectedChar = (chars, selectedChar) => {
     if (chars.length > 0) {
-      const newChars = chars.replaceAll('"', "");
+      const newChars = chars.replaceAll(selectedChar, "");
       return newChars;
     }
   };
@@ -82,9 +95,13 @@ function App() {
 
   if (isAnyChange) {
     setIsAnyChange(false);
-    if (isCheckedRemoveQuotationMark) return prepareDataRemove(InputArray);
-    if (isCheckedAddQuotationMark) return prepareDataAdd(InputArray);
-    setOutputArray(InputArray);
+    let newArray = InputArray;
+    if (isCheckedRemoveSpace) newArray = prepareDataRemove(newArray, " ");
+    if (isCheckedRemoveQuotationMark)
+      newArray = prepareDataRemove(newArray, '"');
+    if (isCheckedAddQuotationMark) newArray = prepareDataAdd(newArray);
+
+    setOutputArray(newArray);
   }
 
   return (
@@ -110,11 +127,18 @@ function App() {
           selectedString={selectedStringOutput}
           onSelectedString={onSelectedOutputStringHandler}
         />
-        <Checkbox
-          title={titleAddQuatationMarks}
-          isChecked={isCheckedAddQuotationMarkHandler}
-          checked={isCheckedAddQuotationMark}
-        />
+        <div className="action-buttons">
+          <Checkbox
+            title={titleAddQuatationMarks}
+            isChecked={isCheckedAddQuotationMarkHandler}
+            checked={isCheckedAddQuotationMark}
+          />
+          <Checkbox
+            title={titleSpace}
+            isChecked={isCheckedRemoveSpaceHandler}
+            checked={isCheckedRemoveSpace}
+          />
+        </div>
       </div>
     </div>
   );
