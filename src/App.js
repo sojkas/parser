@@ -52,6 +52,17 @@ function App() {
     setIsAnyChange(true);
   };
 
+  const prepareDataTrim = (outputArray) => {
+    if (outputArray.length > 0) {
+      const newOutputArray = new Array([]);
+      for (const element in outputArray) {
+        newOutputArray[element] = outputArray[element].trim();
+      }
+      return newOutputArray;
+    }
+    return outputArray;
+  }
+
   const prepareDataRemove = (outputArray, removeChar) => {
     if (outputArray.length > 0) {
       const newOutputArray = new Array([]);
@@ -62,7 +73,6 @@ function App() {
         );
       }
       return newOutputArray;
-      /* setOutputArray(newOutputArray); */
     }
     return outputArray;
   };
@@ -74,7 +84,6 @@ function App() {
         newOutputArray[element] = addQuotationMarks(outputArray[element]);
       }
       return newOutputArray;
-      /* setOutputArray(newOutputArray); */
     }
     return outputArray;
   };
@@ -96,7 +105,7 @@ function App() {
   if (isAnyChange) {
     setIsAnyChange(false);
     let newArray = InputArray;
-    if (isCheckedRemoveSpace) newArray = prepareDataRemove(newArray, " ");
+    if (isCheckedRemoveSpace) newArray = prepareDataTrim(newArray);
     if (isCheckedRemoveQuotationMark)
       newArray = prepareDataRemove(newArray, '"');
     if (isCheckedAddQuotationMark) newArray = prepareDataAdd(newArray);
