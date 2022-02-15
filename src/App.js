@@ -146,7 +146,7 @@ function App() {
           if (customString.length > 0) {
             let customStringData = customString;
             for (const a in newArray) {
-              customStringData = customStringData.replace(
+              customStringData = customStringData.replaceAll(
                 "{" + a + "}",
                 newArray[a]
               );
