@@ -7,8 +7,8 @@ const Checkbox = (props) => {
     }
   return (
     <label className="checkbox-all">
-      <input type="checkbox" checked={props.checked} onChange={checkboxChangeHandler} />
-      <p className="font-bold rounded-full">{props.title}</p>
+      <input className="checked:bg-gray-500" type="checkbox" checked={props.checked} onChange={checkboxChangeHandler} />
+      <p className="">{props.title}</p>
     </label>
   );
 };

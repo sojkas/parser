@@ -7,7 +7,7 @@ const OutputForm = (props) => {
        return (
         <div className="input-window__form">
             <p>{outputTitle}</p>
-            <textarea className="area" value={props.OutputString} readOnly/>
+            <textarea className="area border" value={props.OutputString} readOnly/>
         </div>
     )
 }
