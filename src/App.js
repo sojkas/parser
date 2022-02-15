@@ -6,7 +6,7 @@ import StringOption from "./components/StringOption";
 import Checkbox from "./components/Checkbox";
 
 function App() {
-  const [InputArray, setInputArray] = useState([]);
+  const [inputData, setInputData] = useState("");
   const [outputArray, setOutputArray] = useState([]);
   const [selectedStringInput, setSelectedStringInput] = useState(/\r?\n/g);
   const [selectedStringOutput, setSelectedStringOutput] = useState(",");
@@ -15,19 +15,28 @@ function App() {
   const [isCheckedAddQuotationMark, setIsCheckedAddQuotationMark] =
     useState(false);
   const [isCheckedRemoveSpace, setIsCheckedRemoveSpace] = useState(false);
+  const [isCheckedMultilines, setIsCheckedMultilines] = useState(false);
   const [isAnyChange, setIsAnyChange] = useState(false);
+  const [disabled, setIsDisabled] = useState(true);
 
   const titleRemoveQuatationMarks = "Odebrat uvozovky";
   const titleAddQuatationMarks = "Přídat uvozovky";
   const titleSpace = "Otrimovat";
+  const titleMultilines = "Multilines";
 
   const onInputData = (inputData) => {
-    setInputArray(inputData.split(selectedStringInput));
+    setInputData(inputData);
     setIsAnyChange(true);
   };
 
   const onSelectedInputStringHandler = (selectedString) => {
     setSelectedStringInput(selectedString);
+    if (selectedString === "\n") {
+      setIsDisabled(true);
+      setIsCheckedMultilines(false);
+    } else {
+      setIsDisabled(false);
+    }
     setIsAnyChange(true);
   };
   const onSelectedOutputStringHandler = (selectedString) => {
@@ -52,6 +61,11 @@ function App() {
     setIsAnyChange(true);
   };
 
+  const isCheckedMultilinesHandler = (isChecked) => {
+    setIsCheckedMultilines(isChecked);
+    setIsAnyChange(true);
+  };
+
   const prepareDataTrim = (outputArray) => {
     if (outputArray.length > 0) {
       const newOutputArray = new Array([]);
@@ -61,15 +75,15 @@ function App() {
       return newOutputArray;
     }
     return outputArray;
-  }
+  };
 
-  const prepareDataRemove = (outputArray, removeChar) => {
+  const prepareDataReplace = (outputArray, oldChar, newChar) => {
     if (outputArray.length > 0) {
       const newOutputArray = new Array([]);
       for (const element in outputArray) {
-        newOutputArray[element] = removeSelectedChar(
+        newOutputArray[element] = replaceSelectedChar(
           outputArray[element],
-          removeChar
+          oldChar, newChar
         );
       }
       return newOutputArray;
@@ -88,9 +102,9 @@ function App() {
     return outputArray;
   };
 
-  const removeSelectedChar = (chars, selectedChar) => {
+  const replaceSelectedChar = (chars, selectedChar, newSelectedChar) => {
     if (chars.length > 0) {
-      const newChars = chars.replaceAll(selectedChar, "");
+      const newChars = chars.replaceAll(selectedChar, newSelectedChar);
       return newChars;
     }
   };
@@ -104,12 +118,13 @@ function App() {
 
   if (isAnyChange) {
     setIsAnyChange(false);
-    let newArray = InputArray;
+    let newData = inputData;
+    if(isCheckedMultilines) newData = inputData.replaceAll("\n", selectedStringInput);
+    let newArray = newData.split(selectedStringInput);
     if (isCheckedRemoveQuotationMark)
-      newArray = prepareDataRemove(newArray, '"');
-    if (isCheckedAddQuotationMark) newArray = prepareDataAdd(newArray);
+      newArray = prepareDataReplace(newArray, '"', '');
     if (isCheckedRemoveSpace) newArray = prepareDataTrim(newArray);
-
+    if (isCheckedAddQuotationMark) newArray = prepareDataAdd(newArray);
     setOutputArray(newArray);
   }
 
@@ -121,11 +136,19 @@ function App() {
           selectedString={selectedStringInput}
           onSelectedString={onSelectedInputStringHandler}
         />
-        <Checkbox
-          title={titleRemoveQuatationMarks}
-          isChecked={isCheckedRemoveQuotationMarkHandler}
-          checked={isCheckedRemoveQuotationMark}
-        />
+        <div className="action-buttons">
+          <Checkbox
+            title={titleRemoveQuatationMarks}
+            isChecked={isCheckedRemoveQuotationMarkHandler}
+            checked={isCheckedRemoveQuotationMark}
+          />
+          <Checkbox
+            title={titleMultilines}
+            isChecked={isCheckedMultilinesHandler}
+            checked={isCheckedMultilines}
+            disabled={disabled}
+          />
+        </div>
       </div>
       <div className="output-window">
         <OutputList
