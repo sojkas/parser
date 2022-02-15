@@ -7,7 +7,7 @@ import Checkbox from "./components/Checkbox";
 
 function App() {
   const [inputData, setInputData] = useState("");
-  const [outputArray, setOutputArray] = useState([]);
+  const [outputData, setOutputData] = useState("");
   const [selectedStringInput, setSelectedStringInput] = useState(/\r?\n/g);
   const [selectedStringOutput, setSelectedStringOutput] = useState(",");
   const [isCheckedRemoveQuotationMark, setIsCheckedRemoveQuotationMark] =
@@ -83,7 +83,8 @@ function App() {
       for (const element in outputArray) {
         newOutputArray[element] = replaceSelectedChar(
           outputArray[element],
-          oldChar, newChar
+          oldChar,
+          newChar
         );
       }
       return newOutputArray;
@@ -118,14 +119,27 @@ function App() {
 
   if (isAnyChange) {
     setIsAnyChange(false);
-    let newData = inputData;
-    if(isCheckedMultilines) newData = inputData.replaceAll("\n", selectedStringInput);
-    let newArray = newData.split(selectedStringInput);
-    if (isCheckedRemoveQuotationMark)
-      newArray = prepareDataReplace(newArray, '"', '');
-    if (isCheckedRemoveSpace) newArray = prepareDataTrim(newArray);
-    if (isCheckedAddQuotationMark) newArray = prepareDataAdd(newArray);
-    setOutputArray(newArray);
+    if (isCheckedMultilines) {
+      let newDataArray = inputData.split("\n");
+      for (const element in newDataArray) {
+        let newArray = newDataArray[element].split(selectedStringInput);
+        if (isCheckedRemoveQuotationMark)
+          newArray = prepareDataReplace(newArray, '"', "");
+        if (isCheckedRemoveSpace) newArray = prepareDataTrim(newArray);
+        if (isCheckedAddQuotationMark) newArray = prepareDataAdd(newArray);
+        const newData = newArray.join(selectedStringOutput);
+        newDataArray[element] = newData;
+        setOutputData(newDataArray.join('\n'));
+      }
+    } else {
+        let newArray = inputData.split(selectedStringInput);
+        if (isCheckedRemoveQuotationMark)
+          newArray = prepareDataReplace(newArray, '"', "");
+        if (isCheckedRemoveSpace) newArray = prepareDataTrim(newArray);
+        if (isCheckedAddQuotationMark) newArray = prepareDataAdd(newArray);
+        setOutputData(newArray.join(selectedStringOutput));
+    }
+    
   }
 
   return (
@@ -153,7 +167,7 @@ function App() {
       <div className="output-window">
         <OutputList
           selectedString={selectedStringOutput}
-          outputArray={outputArray}
+          outputArray={outputData}
         />
         <StringOption
           selectedString={selectedStringOutput}
