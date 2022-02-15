@@ -27,7 +27,8 @@ function App() {
   const titleSpace = "Otrimovat";
   const titleMultilines = "Multilines";
   const titleCustomText =
-    "Zadejte text ve formátu 'UPDATE table_name SET col1 = val1,... WHERE id in ({0}, {1}, {2},...);':";
+    "Zadejte text:";
+  const customTextFieldMessage ="UPDATE table_name SET col1 = val1,... WHERE id in ({0}, {1}, {2},...);"
   const outputTitle = "A tady nalezneme sparsovaný blok:";
   const outputTextTitle = "A tady naleznete zadaná data ve Vašem textu:";
 
@@ -210,7 +211,7 @@ function App() {
             checked={isCheckedRemoveSpace}
           />
         </div>
-        <InputText title={titleCustomText} customText={onSetCustomString} />
+        <InputText title={titleCustomText} customText={onSetCustomString} customTextPlaceholder={customTextFieldMessage}/>
         <OutputList
           selectedString={selectedStringOutput}
           outputArray={outputDataWithString}
