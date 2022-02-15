@@ -27,7 +27,7 @@ function App() {
   const titleSpace = "Otrimovat";
   const titleMultilines = "Multilines";
   const titleCustomText =
-    "Zadejte text ve formátu 'insert (a,b,c) into ({0}, {1}, {2})':";
+    "Zadejte text ve formátu 'UPDATE table_name SET column1 = value1, column2 = value2, ... WHERE id in ({0}, {1}, {2}....);':";
   const outputTitle = "A tady nalezneme sparsovaný blok:";
   const outputTextTitle = "A tady naleznete zadaná data ve Vašem textu:";
 
