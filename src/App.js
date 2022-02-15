@@ -4,10 +4,13 @@ import React, { useState } from "react";
 import OutputList from "./components/OutpulList";
 import StringOption from "./components/StringOption";
 import Checkbox from "./components/Checkbox";
+import InputText from "./components/InputText";
 
 function App() {
   const [inputData, setInputData] = useState("");
   const [outputData, setOutputData] = useState("");
+  const [customString, setCustomString] = useState("");
+  const [outputDataWithString, setOutputDataWithString] = useState("");
   const [selectedStringInput, setSelectedStringInput] = useState(/\r?\n/g);
   const [selectedStringOutput, setSelectedStringOutput] = useState(",");
   const [isCheckedRemoveQuotationMark, setIsCheckedRemoveQuotationMark] =
@@ -23,6 +26,10 @@ function App() {
   const titleAddQuatationMarks = "Přídat uvozovky";
   const titleSpace = "Otrimovat";
   const titleMultilines = "Multilines";
+  const titleCustomText =
+    "Zadejte text ve formátu 'insert (a,b,c) into ({0}, {1}, {2})':";
+  const outputTitle = "A tady nalezneme sparsovaný blok:";
+  const outputTextTitle = "A tady naleznete zadaná data ve Vašem textu:";
 
   const onInputData = (inputData) => {
     setInputData(inputData);
@@ -63,6 +70,11 @@ function App() {
 
   const isCheckedMultilinesHandler = (isChecked) => {
     setIsCheckedMultilines(isChecked);
+    setIsAnyChange(true);
+  };
+
+  const onSetCustomString = (customText) => {
+    setCustomString(customText);
     setIsAnyChange(true);
   };
 
@@ -116,30 +128,42 @@ function App() {
       return newChars;
     }
   };
-
-  if (isAnyChange) {
-    setIsAnyChange(false);
-    if (isCheckedMultilines) {
-      let newDataArray = inputData.split("\n");
-      for (const element in newDataArray) {
-        let newArray = newDataArray[element].split(selectedStringInput);
-        if (isCheckedRemoveQuotationMark)
-          newArray = prepareDataReplace(newArray, '"', "");
-        if (isCheckedRemoveSpace) newArray = prepareDataTrim(newArray);
-        if (isCheckedAddQuotationMark) newArray = prepareDataAdd(newArray);
-        const newData = newArray.join(selectedStringOutput);
-        newDataArray[element] = newData;
-        setOutputData(newDataArray.join('\n'));
-      }
-    } else {
+  if (inputData.length > 0) {
+    if (isAnyChange) {
+      setIsAnyChange(false);
+      if (isCheckedMultilines) {
+        let newDataArray = inputData.split("\n");
+        let customStringDataArray = [];
+        for (const element in newDataArray) {
+          let newArray = newDataArray[element].split(selectedStringInput);
+          if (isCheckedRemoveQuotationMark)
+            newArray = prepareDataReplace(newArray, '"', "");
+          if (isCheckedRemoveSpace) newArray = prepareDataTrim(newArray);
+          if (isCheckedAddQuotationMark) newArray = prepareDataAdd(newArray);
+          const newData = newArray.join(selectedStringOutput);
+          newDataArray[element] = newData;
+          if (customString.length > 0) {
+            let customStringData = customString;
+            for (const a in newArray) {
+              customStringData = customStringData.replace(
+                "{" + a + "}",
+                newArray[a]
+              );
+            }
+            customStringDataArray[element]=customStringData;
+          }
+          setOutputData(newDataArray.join("\n"));
+          setOutputDataWithString(customStringDataArray.join("\n"));
+        }
+      } else {
         let newArray = inputData.split(selectedStringInput);
         if (isCheckedRemoveQuotationMark)
           newArray = prepareDataReplace(newArray, '"', "");
         if (isCheckedRemoveSpace) newArray = prepareDataTrim(newArray);
         if (isCheckedAddQuotationMark) newArray = prepareDataAdd(newArray);
         setOutputData(newArray.join(selectedStringOutput));
+      }
     }
-    
   }
 
   return (
@@ -168,6 +192,7 @@ function App() {
         <OutputList
           selectedString={selectedStringOutput}
           outputArray={outputData}
+          outputTitle={outputTitle}
         />
         <StringOption
           selectedString={selectedStringOutput}
@@ -185,6 +210,12 @@ function App() {
             checked={isCheckedRemoveSpace}
           />
         </div>
+        <InputText title={titleCustomText} customText={onSetCustomString} />
+        <OutputList
+          selectedString={selectedStringOutput}
+          outputArray={outputDataWithString}
+          outputTitle={outputTextTitle}
+        />
       </div>
     </div>
   );

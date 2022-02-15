@@ -2,11 +2,11 @@ import React from "react";
 import "./OutputForm.css";
 
 const OutputForm = (props) => {
-    const outputTitle = "A tady nalezneme sparsovaný blok:"
+    
 
        return (
         <div className="input-window__form">
-            <p>{outputTitle}</p>
+            <p>{props.outputTitle}</p>
             <textarea className="area border" value={props.OutputString} readOnly/>
         </div>
     )

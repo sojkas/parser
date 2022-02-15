@@ -5,7 +5,7 @@ const OutputList = (props) => {
   
   return (
     <div>
-      <OutputForm OutputString={props.outputArray} />
+      <OutputForm OutputString={props.outputArray} outputTitle={props.outputTitle}/>
     </div>
   );
 };

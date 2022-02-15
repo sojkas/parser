@@ -1,0 +1,10 @@
+.text-input__form {
+    display: flex;
+    flex-direction: column;
+    margin: 50px 0;
+    width: 45vw;
+}
+
+.text-input__label {
+    margin: 0.3rem 0;
+}
