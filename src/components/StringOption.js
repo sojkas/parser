@@ -8,7 +8,7 @@ const StringOption = (props) => {
   return (
     <div className="select-box">
       <label>Vyberte oddělovací znak:</label>
-      <select className="font-bold" value={props.selectedString} onChange={selectString}>
+      <select value={props.selectedString} onChange={selectString}>
         <option value="&#10;">NewLine</option>
         <option value=",">,</option>
         <option value=";">;</option>

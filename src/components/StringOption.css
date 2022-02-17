@@ -1,13 +1,35 @@
 .select-box {
-    text-align: left;
+  text-align: left;
+  position: relative;
 }
 
 .select-box label {
-    margin-bottom: 0.5rem;
-  }
+  position: absolute;
+  top: 0.5rem;
+  left: 1rem;
+  font-size: 12px;
+  line-height: 14px;
+  pointer-events: none;
+}
 
-.select-box select {
-    margin-left: 20px;
-    padding: 0.5rem 3rem;
-    border-radius: 6px;
+select {
+  width: 200px;
+  padding: 1.5rem 3.5rem 0.5rem 1rem;
+  background-color: white;
+  border: 1px solid #444d56;
+  box-sizing: border-box;
+  border-radius: 3px;
+  appearance: none;
+  text-align: left;
+  background-image: url("../icons/arrow_down.svg");
+  background-repeat: no-repeat;
+  background-position-x: calc(100% - 1rem);
+  background-position-y: 1.5rem;
+  background-size: 24px 24px;
+}
+
+select:focus-visible {
+  border: 2px solid #0366d6;
+  box-sizing: border-box;
+  border-radius: 3px;
 }
