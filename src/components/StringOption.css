@@ -33,3 +33,7 @@ select:focus-visible {
   box-sizing: border-box;
   border-radius: 3px;
 }
+
+select:active {
+  background-image: url("../icons/arrow_up.svg");
+}
