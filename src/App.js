@@ -20,18 +20,20 @@ function App() {
   const [isCheckedRemoveSpace, setIsCheckedRemoveSpace] = useState(false);
   const [isCheckedMultilines, setIsCheckedMultilines] = useState(false);
   const [isAnyChange, setIsAnyChange] = useState(false);
-  const [multilineCheckboxDisabled, setMultilineCheckboxDisabled] = useState(true);
+  const [multilineCheckboxDisabled, setMultilineCheckboxDisabled] =
+    useState(true);
 
   const titleRemoveQuatationMarks = "Odebrat uvozovky";
   const titleAddQuatationMarks = "Přídat uvozovky";
   const titleSpace = "Otrimovat";
   const titleMultilines = "Multilines";
-  const titleCustomText = "Zde zadejte text, do ktereho budou dosazeny hodnoty.";
+  const titleCustomText =
+    "Zde zadejte text, do ktereho budou dosazeny hodnoty.";
   const customTextFieldMessage =
     "UPDATE table_name SET col1 = val1,... WHERE id in ({0}, {1}, {2},...);";
   const outputTitle = "A tady nalezneme sparsovaný blok:";
   /* const outputTextTitle = "A tady naleznete zadaná data ve Vašem textu:"; */
-  const inputFormPlaceholder= 'Např. 111, 222, 333, 444, atp.';
+  const inputFormPlaceholder = "Např. 111, 222, 333, 444, atp.";
 
   const onInputData = (inputData) => {
     setInputData(inputData);
@@ -189,23 +191,28 @@ function App() {
   return (
     <div className="application">
       <div className="input-window">
-        <InputForm inputData={onInputData} inputFormPlaceholder={inputFormPlaceholder} />
-        <StringOption
-          selectedString={selectedStringInput}
-          onSelectedString={onSelectedInputStringHandler}
+        <InputForm
+          inputData={onInputData}
+          inputFormPlaceholder={inputFormPlaceholder}
         />
         <div className="action-buttons">
-          <Checkbox
-            title={titleRemoveQuatationMarks}
-            isChecked={isCheckedRemoveQuotationMarkHandler}
-            checked={isCheckedRemoveQuotationMark}
+          <StringOption
+            selectedString={selectedStringInput}
+            onSelectedString={onSelectedInputStringHandler}
           />
-          <Checkbox
-            title={titleMultilines}
-            isChecked={isCheckedMultilinesHandler}
-            checked={isCheckedMultilines}
-            disabled={multilineCheckboxDisabled}
-          />
+          <div className="action-buttons">
+            <Checkbox
+              title={titleRemoveQuatationMarks}
+              isChecked={isCheckedRemoveQuotationMarkHandler}
+              checked={isCheckedRemoveQuotationMark}
+            />
+            <Checkbox
+              title={titleMultilines}
+              isChecked={isCheckedMultilinesHandler}
+              checked={isCheckedMultilines}
+              disabled={multilineCheckboxDisabled}
+            />
+          </div>
         </div>
       </div>
       <div className="output-window">
@@ -214,21 +221,23 @@ function App() {
           outputArray={outputData}
           outputTitle={outputTitle}
         />
-        <StringOption
-          selectedString={selectedStringOutput}
-          onSelectedString={onSelectedOutputStringHandler}
-        />
         <div className="action-buttons">
-          <Checkbox
-            title={titleAddQuatationMarks}
-            isChecked={isCheckedAddQuotationMarkHandler}
-            checked={isCheckedAddQuotationMark}
+          <StringOption
+            selectedString={selectedStringOutput}
+            onSelectedString={onSelectedOutputStringHandler}
           />
-          <Checkbox
-            title={titleSpace}
-            isChecked={isCheckedRemoveSpaceHandler}
-            checked={isCheckedRemoveSpace}
-          />
+          <div className="action-buttons">
+            <Checkbox
+              title={titleAddQuatationMarks}
+              isChecked={isCheckedAddQuotationMarkHandler}
+              checked={isCheckedAddQuotationMark}
+            />
+            <Checkbox
+              title={titleSpace}
+              isChecked={isCheckedRemoveSpaceHandler}
+              checked={isCheckedRemoveSpace}
+            />
+          </div>
         </div>
         <InputText
           title={titleCustomText}

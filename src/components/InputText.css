@@ -1,7 +1,7 @@
 .text-input__form {
     display: flex;
     flex-direction: column;
-    margin: 50px 0;
+    margin: 1rem 0;
     width: 45vw;
 }
 
