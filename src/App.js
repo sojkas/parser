@@ -20,7 +20,7 @@ function App() {
   const [isCheckedRemoveSpace, setIsCheckedRemoveSpace] = useState(false);
   const [isCheckedMultilines, setIsCheckedMultilines] = useState(false);
   const [isAnyChange, setIsAnyChange] = useState(false);
-  const [disabled, setIsDisabled] = useState(true);
+  const [multilineCheckboxDisabled, setMultilineCheckboxDisabled] = useState(true);
 
   const titleRemoveQuatationMarks = "Odebrat uvozovky";
   const titleAddQuatationMarks = "Přídat uvozovky";
@@ -40,10 +40,10 @@ function App() {
   const onSelectedInputStringHandler = (selectedString) => {
     setSelectedStringInput(selectedString);
     if (selectedString === "\n") {
-      setIsDisabled(true);
+      setMultilineCheckboxDisabled(true);
       setIsCheckedMultilines(false);
     } else {
-      setIsDisabled(false);
+      setMultilineCheckboxDisabled(false);
     }
     setIsAnyChange(true);
   };
@@ -203,7 +203,7 @@ function App() {
             title={titleMultilines}
             isChecked={isCheckedMultilinesHandler}
             checked={isCheckedMultilines}
-            disabled={disabled}
+            disabled={multilineCheckboxDisabled}
           />
         </div>
       </div>
