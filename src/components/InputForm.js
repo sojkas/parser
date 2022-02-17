@@ -14,10 +14,10 @@ const InputForm = (props) => {
   }
 
   return (
-    <div className="input-window__form">
-      <p className="input-window__label">{title}</p>
+    <div className="input-window__form text-area">
+      <label className="input-window__label text-area__label">{title}</label>
       <textarea
-        className="area border"
+        className="text-area__area border"
         onChange={submitSaveHandler}
         onPaste={submitOnPasteSaveHandler}
       />

@@ -26,7 +26,7 @@ function App() {
   const titleAddQuatationMarks = "Přídat uvozovky";
   const titleSpace = "Otrimovat";
   const titleMultilines = "Multilines";
-  const titleCustomText = "Zadejte text:";
+  const titleCustomText = "Zde zadejte text, do ktereho budou dosazeny hodnoty.";
   const customTextFieldMessage =
     "UPDATE table_name SET col1 = val1,... WHERE id in ({0}, {1}, {2},...);";
   const outputTitle = "A tady nalezneme sparsovaný blok:";
