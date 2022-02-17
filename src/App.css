@@ -40,7 +40,7 @@
   border: 1px solid #444d56;
   box-sizing: border-box;
   border-radius: 3px;
-  resize: none;
+  resize: none;  
 }
 
 .text-area__area:focus-visible {
@@ -48,6 +48,11 @@
   box-sizing: border-box;
   border-radius: 3px;
 }
+
+.text-area__area::placeholder{
+  color: #586069;
+}
+
 .btn {
   margin: 0px 1em;
   padding: 10px;

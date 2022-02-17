@@ -31,6 +31,7 @@ function App() {
     "UPDATE table_name SET col1 = val1,... WHERE id in ({0}, {1}, {2},...);";
   const outputTitle = "A tady nalezneme sparsovaný blok:";
   /* const outputTextTitle = "A tady naleznete zadaná data ve Vašem textu:"; */
+  const inputFormPlaceholder= 'Např. 111, 222, 333, 444, atp.';
 
   const onInputData = (inputData) => {
     setInputData(inputData);
@@ -188,7 +189,7 @@ function App() {
   return (
     <div className="application">
       <div className="input-window">
-        <InputForm inputData={onInputData} />
+        <InputForm inputData={onInputData} inputFormPlaceholder={inputFormPlaceholder} />
         <StringOption
           selectedString={selectedStringInput}
           onSelectedString={onSelectedInputStringHandler}

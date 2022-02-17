@@ -18,6 +18,7 @@ const InputForm = (props) => {
       <label className="input-window__label text-area__label">{title}</label>
       <textarea
         className="text-area__area border"
+        placeholder={props.inputFormPlaceholder}
         onChange={submitSaveHandler}
         onPaste={submitOnPasteSaveHandler}
       />
