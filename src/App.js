@@ -10,7 +10,7 @@ function App() {
   const [inputData, setInputData] = useState("");
   const [outputData, setOutputData] = useState("");
   const [customString, setCustomString] = useState("");
-  const [outputDataWithString, setOutputDataWithString] = useState("");
+  /* const [outputDataWithString, setOutputDataWithString] = useState(""); */
   const [selectedStringInput, setSelectedStringInput] = useState(/\r?\n/g);
   const [selectedStringOutput, setSelectedStringOutput] = useState(",");
   const [isCheckedRemoveQuotationMark, setIsCheckedRemoveQuotationMark] =
@@ -26,11 +26,11 @@ function App() {
   const titleAddQuatationMarks = "Přídat uvozovky";
   const titleSpace = "Otrimovat";
   const titleMultilines = "Multilines";
-  const titleCustomText =
-    "Zadejte text:";
-  const customTextFieldMessage ="UPDATE table_name SET col1 = val1,... WHERE id in ({0}, {1}, {2},...);"
+  const titleCustomText = "Zadejte text:";
+  const customTextFieldMessage =
+    "UPDATE table_name SET col1 = val1,... WHERE id in ({0}, {1}, {2},...);";
   const outputTitle = "A tady nalezneme sparsovaný blok:";
-  const outputTextTitle = "A tady naleznete zadaná data ve Vašem textu:";
+  /* const outputTextTitle = "A tady naleznete zadaná data ve Vašem textu:"; */
 
   const onInputData = (inputData) => {
     setInputData(inputData);
@@ -129,6 +129,7 @@ function App() {
       return newChars;
     }
   };
+
   if (inputData.length > 0) {
     if (isAnyChange) {
       setIsAnyChange(false);
@@ -151,18 +152,35 @@ function App() {
                 newArray[a]
               );
             }
-            customStringDataArray[element]=customStringData;
+            customStringDataArray[element] = customStringData;
           }
-          setOutputData(newDataArray.join("\n"));
-          setOutputDataWithString(customStringDataArray.join("\n"));
+          if (customString.length > 0) {
+            setOutputData(customStringDataArray.join("\n"));
+          } else {
+            setOutputData(newDataArray.join("\n"));
+          }
+          /* setOutputDataWithString(customStringDataArray.join("\n")); */
         }
       } else {
         let newArray = inputData.split(selectedStringInput);
+        let customStringData = customString;
         if (isCheckedRemoveQuotationMark)
           newArray = prepareDataReplace(newArray, '"', "");
         if (isCheckedRemoveSpace) newArray = prepareDataTrim(newArray);
         if (isCheckedAddQuotationMark) newArray = prepareDataAdd(newArray);
-        setOutputData(newArray.join(selectedStringOutput));
+        if (customString.length > 0) {
+          for (const a in newArray) {
+            customStringData = customStringData.replaceAll(
+              "{" + a + "}",
+              newArray[a]
+            );
+          }
+        }
+        if (customString.length > 0) {
+          setOutputData(customStringData);
+        } else {
+          setOutputData(newArray.join(selectedStringOutput));
+        }
       }
     }
   }
@@ -211,12 +229,16 @@ function App() {
             checked={isCheckedRemoveSpace}
           />
         </div>
-        <InputText title={titleCustomText} customText={onSetCustomString} customTextPlaceholder={customTextFieldMessage}/>
-        <OutputList
+        <InputText
+          title={titleCustomText}
+          customText={onSetCustomString}
+          customTextPlaceholder={customTextFieldMessage}
+        />
+        {/* <OutputList
           selectedString={selectedStringOutput}
           outputArray={outputDataWithString}
           outputTitle={outputTextTitle}
-        />
+        /> */}
       </div>
     </div>
   );
