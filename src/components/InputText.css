@@ -18,6 +18,7 @@
     padding: 1rem;
     font-size: 16px;
     line-height: 150%;
+    color: #2C2E2F;
 }
 
 .text-input__input:focus-visible {
@@ -27,4 +28,8 @@
 
 :focus-visible {
     outline: none;
+}
+
+.text-input__input::placeholder {
+    color: #586069;
 }
