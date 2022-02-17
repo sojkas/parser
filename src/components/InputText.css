@@ -6,5 +6,25 @@
 }
 
 .text-input__label {
-    margin: 0.3rem 0;
+    margin: 4px 0;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.text-input__input {
+    border: 1px solid #444D56;
+    box-sizing: border-box;
+    border-radius: 3px;
+    padding: 1rem;
+    font-size: 16px;
+    line-height: 150%;
+}
+
+.text-input__input:focus-visible {
+    border: 2px solid #0366D6;
+    box-sizing: border-box;
+}
+
+:focus-visible {
+    outline: none;
 }

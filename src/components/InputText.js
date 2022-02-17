@@ -8,8 +8,8 @@ const InputText = (props) =>{
 
     return (
         <div className="text-input__form">
-            <p className="text-input__label">{props.title}</p>
-            <input className="border" type="text" onChange={onTextTypeHandler} placeholder={props.customTextPlaceholder}/>
+            <input className="text-input__input" type="text" onChange={onTextTypeHandler} placeholder={props.customTextPlaceholder}/>
+            <p className="text-input__label">{props.title}</p>            
         </div>
     )
 }
