@@ -16,7 +16,7 @@
   /* 2 */
   border-style: solid;
   /* 2 */
-  border-color: #e5e7eb;
+  border-color: currentColor;
   /* 2 */
 }
 
@@ -466,8 +466,29 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-backdrop-sepia:  ;
 }
 
+.rounded {
+  border-radius: 0.25rem;
+}
+
 .border {
   border-width: 1px;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.p-2 {
+  padding: 0.5rem;
+}
+
+.p-1 {
+  padding: 0.25rem;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 
 body {
@@ -478,7 +499,68 @@ body {
 code {
 }
 
-.checked\:bg-gray-500:checked {
-  --tw-bg-opacity: 1;
-  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
+.placeholder\:text-silvergrey::-webkit-input-placeholder {
+  --tw-text-opacity: 1;
+  color: rgb(88 96 105 / var(--tw-text-opacity));
+}
+
+.placeholder\:text-silvergrey:-ms-input-placeholder {
+  --tw-text-opacity: 1;
+  color: rgb(88 96 105 / var(--tw-text-opacity));
+}
+
+.placeholder\:text-silvergrey::placeholder {
+  --tw-text-opacity: 1;
+  color: rgb(88 96 105 / var(--tw-text-opacity));
+}
+
+.placeholder\:decoration-silvergrey::-webkit-input-placeholder {
+  -webkit-text-decoration-color: #586069;
+          text-decoration-color: #586069;
+}
+
+.placeholder\:decoration-silvergrey:-ms-input-placeholder {
+  text-decoration-color: #586069;
+}
+
+.placeholder\:decoration-silvergrey::placeholder {
+  -webkit-text-decoration-color: #586069;
+          text-decoration-color: #586069;
+}
+
+.focus\:border-2:focus {
+  border-width: 2px;
+}
+
+.focus\:border-navy:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(3 102 214 / var(--tw-border-opacity));
+}
+
+.focus\:p-\[\]:focus {
+  padding: ;
+}
+
+.focus\:p-\[p\]:focus {
+  padding: p;
+}
+
+.focus\:p-\[p-4\]:focus {
+  padding: p-4;
+}
+
+.focus\:p-\[calc\(\)\]:focus {
+  padding: calc();
+}
+
+.focus\:p-\[15\]:focus {
+  padding: 15;
+}
+
+.focus\:p-\[15px\]:focus {
+  padding: 15px;
+}
+
+.focus\:p-\[calc\(1rem-1px\)\]:focus {
+  padding: calc(1rem - 1px);
 }
