@@ -478,10 +478,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding: 1rem;
 }
 
-.p-2 {
-  padding: 0.5rem;
-}
-
 .p-1 {
   padding: 0.25rem;
 }
@@ -514,20 +510,6 @@ code {
   color: rgb(88 96 105 / var(--tw-text-opacity));
 }
 
-.placeholder\:decoration-silvergrey::-webkit-input-placeholder {
-  -webkit-text-decoration-color: #586069;
-          text-decoration-color: #586069;
-}
-
-.placeholder\:decoration-silvergrey:-ms-input-placeholder {
-  text-decoration-color: #586069;
-}
-
-.placeholder\:decoration-silvergrey::placeholder {
-  -webkit-text-decoration-color: #586069;
-          text-decoration-color: #586069;
-}
-
 .focus\:border-2:focus {
   border-width: 2px;
 }
@@ -535,30 +517,6 @@ code {
 .focus\:border-navy:focus {
   --tw-border-opacity: 1;
   border-color: rgb(3 102 214 / var(--tw-border-opacity));
-}
-
-.focus\:p-\[\]:focus {
-  padding: ;
-}
-
-.focus\:p-\[p\]:focus {
-  padding: p;
-}
-
-.focus\:p-\[p-4\]:focus {
-  padding: p-4;
-}
-
-.focus\:p-\[calc\(\)\]:focus {
-  padding: calc();
-}
-
-.focus\:p-\[15\]:focus {
-  padding: 15;
-}
-
-.focus\:p-\[15px\]:focus {
-  padding: 15px;
 }
 
 .focus\:p-\[calc\(1rem-1px\)\]:focus {
