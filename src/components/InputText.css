@@ -24,6 +24,7 @@
 .text-input__input:focus-visible {
     border: 2px solid #0366D6;
     box-sizing: border-box;
+    padding: calc(1rem - 1px);
 }
 
 :focus-visible {

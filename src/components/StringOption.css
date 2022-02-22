@@ -32,6 +32,7 @@ select:focus-visible {
   border: 2px solid #0366d6;
   box-sizing: border-box;
   border-radius: 3px;
+  padding: calc(1.5rem - 1px) calc(3.5rem - 1px) calc(0.5rem - 1px) calc(1rem - 1px);
 }
 
 select:active {

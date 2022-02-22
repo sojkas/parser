@@ -470,10 +470,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-width: 1px;
 }
 
-.font-bold {
-  font-weight: 700;
-}
-
 body {
   margin: 0;
   color: #2C2E2F;

@@ -6,8 +6,9 @@ const Checkbox = (props) => {
         props.isChecked(event.target.checked);
     }
   return (
-    <label className="checkbox-all">
-      <input className="checked:bg-gray-500" type="checkbox" checked={props.checked} onChange={checkboxChangeHandler} disabled={props.disabled}/>
+    <label className="checkbox-all" disabled={props.disabled}>
+      <input type="checkbox" checked={props.checked} onChange={checkboxChangeHandler} disabled={props.disabled}/>
+      <span className="checkbox-all__span"></span>
       <p className="">{props.title}</p>
     </label>
   );

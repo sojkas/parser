@@ -46,6 +46,7 @@
   border: 2px solid #0366d6;
   box-sizing: border-box;
   border-radius: 3px;
+  padding: 29px calc(1rem - 1px);
 }
 
 .text-area__area::placeholder{
