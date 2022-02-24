@@ -28,9 +28,11 @@ function App() {
   const titleSpace = "Otrimovat";
   const titleMultilines = "Multilines";
   const titleCustomText =
-    "Zde zadejte text, do ktereho budou dosazeny hodnoty.";
-  const customTextFieldMessage =
     "UPDATE table_name SET col1 = val1,... WHERE id in ({0}, {1}, {2},...);";
+  const customTextFieldMessage =
+    "Zde zadejte text, do ktereho budou dosazeny hodnoty.";
+    const customTextFieldLabel =
+    "Zde zadejte text, do ktereho budou dosazeny hodnoty.";
   const outputTitle = "A tady nalezneme sparsovaný blok:";
   /* const outputTextTitle = "A tady naleznete zadaná data ve Vašem textu:"; */
   const inputFormPlaceholder = "Např. 111, 222, 333, 444, atp.";
@@ -243,6 +245,7 @@ function App() {
           title={titleCustomText}
           customText={onSetCustomString}
           customTextPlaceholder={customTextFieldMessage}
+          label={customTextFieldLabel}
         />
         {/* <OutputList
           selectedString={selectedStringOutput}

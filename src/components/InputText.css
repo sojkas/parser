@@ -3,28 +3,64 @@
     flex-direction: column;
     margin: 1rem 0;
     width: 45vw;
+    position: relative;
 }
 
 .text-input__label {
     margin: 4px 0;
+    font-size: 16px;
+    line-height: 150%;
+    text-align: left;
+    position: absolute;
+    top: 2rem;
+    left:1rem;
+    z-index: 10;
+    opacity: 0;
+    animation: all 0.5s ease-in-out;
+    pointer-events: none;
+}
+
+.text-input__input:focus-visible + .text-input__label {
+    top: 0.5rem;
+    left: 1rem;
     font-size: 12px;
     line-height: 14px;
+    opacity: 1;
+    transition: all 250ms ease-out;
+}
+
+.text-input__input:not(:placeholder-shown) + .text-input__label{
+    top: 0.5rem;
+    left: 1rem;
+    font-size: 12px;
+    line-height: 14px;
+    opacity: 1;
+    transition: all 250ms ease-out;
 }
 
 .text-input__input {
     border: 1px solid #444D56;
     box-sizing: border-box;
     border-radius: 3px;
-    padding: 1rem;
+    padding: 2rem 1rem 1rem 1rem;
     font-size: 16px;
     line-height: 150%;
     color: #2C2E2F;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.text-input__note {
+    position: absolute;
+    top: 4.6rem;
+    left: 0;
 }
 
 .text-input__input:focus-visible {
     border: 2px solid #0366D6;
     box-sizing: border-box;
-    padding: calc(1rem - 1px);
+    padding: calc(2rem - 1px) calc(1rem - 1px) calc(1rem - 1px) calc(1rem - 1px);
 }
 
 :focus-visible {
@@ -33,4 +69,7 @@
 
 .text-input__input::placeholder {
     color: #586069;
+}
+.text-input__input:focus::placeholder{
+    color: transparent;
 }
