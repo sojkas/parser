@@ -17,6 +17,7 @@
     z-index: 10;
     opacity: 0;
     pointer-events: none;
+    transition: top 150ms ease-in, font-size 150ms ease-in, opacity 0ms 150ms;
 }
 
 .text-input__input:focus-visible + .text-input__label {
@@ -25,7 +26,7 @@
     font-size: 12px;
     line-height: 14px;
     opacity: 1;
-    transition: top 250ms ease-in, font-size 250ms ease-in, opacity 0s;
+    transition: top 150ms ease-in, font-size 150ms ease-in, opacity 0s;
 }
 
 .text-input__input:not(:placeholder-shown) + .text-input__label{
@@ -75,7 +76,9 @@
 
 .text-input__input::placeholder {
     color: #586069;
+    transition: color 0ms 150ms;
 }
 .text-input__input:focus::placeholder{
     color: transparent;
+    transition: color 0ms 0ms;
 }
