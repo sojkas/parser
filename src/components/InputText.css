@@ -25,7 +25,7 @@
     font-size: 12px;
     line-height: 14px;
     opacity: 1;
-    transition: all 250ms ease-out;
+    transition: top 250ms ease-in, font-size 250ms ease-in, opacity 0s;
 }
 
 .text-input__input:not(:placeholder-shown) + .text-input__label{
@@ -34,7 +34,6 @@
     font-size: 12px;
     line-height: 14px;
     opacity: 1;
-    transition: all 250ms ease-out;
 }
 
 .text-input__input {
