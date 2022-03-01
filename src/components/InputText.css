@@ -12,7 +12,7 @@
     line-height: 150%;
     text-align: left;
     position: absolute;
-    top: 1rem;
+    top: calc(1rem - 1px);
     left:1rem;
     z-index: 10;
     opacity: 0;
