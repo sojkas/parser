@@ -480,8 +480,33 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 body {
+  focus-color: #0366d6;
+  placeholder-color: #586069;
+  --npadding: 1rem;
+  --bpadding: 1.5rem;
+  --spadding: 0.5rem;
   margin: 0;
   color: #2C2E2F;
+}
+
+.input-setting {
+  box-sizing: border-box;
+  border-radius: 0.25rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(68 77 86 / var(--tw-border-opacity));
+  padding: var(--npadding);
+}
+
+.focus:focus {
+  box-sizing: border-box;
+  border-width: 2px;
+  --tw-border-opacity: 1;
+  border-color: rgb(3 102 214 / var(--tw-border-opacity));
+  padding-left: calc(var(--npadding) - 1px);
+  padding-right: calc(var(--npadding) - 1px);
+  padding-top: calc(var(--bpadding) - 1px);
+  padding-bottom: calc(var(--spadding) - 1px);
 }
 
 code {

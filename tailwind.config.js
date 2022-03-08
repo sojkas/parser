@@ -3,7 +3,7 @@ module.exports = {
   theme: {
     extend: {},
     colors: {
-      'navy' : '#0366d6',
+      'focusColor' : '#0366d6',
       'silvergrey': '#586069'
     }
   },

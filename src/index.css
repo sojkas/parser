@@ -2,9 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 body {
+  focus-color: #0366d6;
+  placeholder-color: #586069;
+  --npadding: 1rem;
+  --bpadding: 1.5rem;
+  --spadding: 0.5rem;
   margin: 0;
   color: #2C2E2F;
+}
+
+.input-setting {
+  @apply p-[var(--npadding)]
+  rounded
+  border
+  border-[#444D56]
+  box-border;
+}
+
+.focus {
+  @apply focus:border-2
+  focus:border-focusColor
+    focus:box-border
+    focus:pl-[calc(var(--npadding)-1px)]
+    focus:pr-[calc(var(--npadding)-1px)]
+    focus:pt-[calc(var(--bpadding)-1px)]
+    focus:pb-[calc(var(--spadding)-1px)];
 }
 
 code {

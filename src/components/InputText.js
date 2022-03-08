@@ -8,7 +8,7 @@ const InputText = (props) =>{
 
     return (
         <div className="text-input__form">
-            <input className="text-input__input" type="text" onChange={onTextTypeHandler} placeholder={props.customTextPlaceholder}/>
+            <input className="text-input__input input-setting focus" type="text" onChange={onTextTypeHandler} placeholder={props.customTextPlaceholder}/>
             <label className="text-input__label">{props.label}</label>
             <p className="text-xs p-1 text-input__note">{props.title}</p>            
         </div>
