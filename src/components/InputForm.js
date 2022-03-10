@@ -3,8 +3,6 @@ import "./InputForm.css";
 
 const InputForm = (props) => {
   const title = "Sem patří blok textu:";
-  /* const parseButton = "Parsuj!";
-  const deleteButton = "Smazat oblast vstupu"; */
 
   const submitSaveHandler = (event) => {
     props.inputData(event.target.value);
@@ -14,10 +12,10 @@ const InputForm = (props) => {
   }
 
   return (
-    <div className="input-window__form text-area">
-      <label className="input-window__label text-area__label">{title}</label>
+    <div className="flex flex-column text-area">
+      <label className="text-area__label">{title}</label>
       <textarea
-        className="text-area__area border"
+        className="text-area__area"
         placeholder={props.inputFormPlaceholder}
         onChange={submitSaveHandler}
         onPaste={submitOnPasteSaveHandler}

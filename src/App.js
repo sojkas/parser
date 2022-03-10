@@ -191,18 +191,18 @@ function App() {
   }
 
   return (
-    <div className="application">
-      <div className="input-window">
+    <div className="flex flex-row w-full h-85vh">
+      <div className="h-full w-1/2 pt-[50px] px-[10px]">
         <InputForm
           inputData={onInputData}
           inputFormPlaceholder={inputFormPlaceholder}
         />
-        <div className="action-buttons">
+        <div className="flex flex-row mt-4">
           <StringOption
             selectedString={selectedStringInput}
             onSelectedString={onSelectedInputStringHandler}
           />
-          <div className="action-buttons">
+          <div className="flex flex-row mt-4">
             <Checkbox
               title={titleRemoveQuatationMarks}
               isChecked={isCheckedRemoveQuotationMarkHandler}
@@ -217,18 +217,18 @@ function App() {
           </div>
         </div>
       </div>
-      <div className="output-window">
+      <div className="h-full w-1/2 pt-[50px] px-[10px]">
         <OutputList
           selectedString={selectedStringOutput}
           outputArray={outputData}
           outputTitle={outputTitle}
         />
-        <div className="action-buttons">
+        <div className="flex flex-row mt-4">
           <StringOption
             selectedString={selectedStringOutput}
             onSelectedString={onSelectedOutputStringHandler}
           />
-          <div className="action-buttons">
+          <div className="flex flex-row mt-4">
             <Checkbox
               title={titleAddQuatationMarks}
               isChecked={isCheckedAddQuotationMarkHandler}
@@ -247,11 +247,6 @@ function App() {
           customTextPlaceholder={customTextFieldMessage}
           label={customTextFieldLabel}
         />
-        {/* <OutputList
-          selectedString={selectedStringOutput}
-          outputArray={outputDataWithString}
-          outputTitle={outputTextTitle}
-        /> */}
       </div>
     </div>
   );

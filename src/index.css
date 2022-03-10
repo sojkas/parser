@@ -2,35 +2,200 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 body {
-  focus-color: #0366d6;
-  placeholder-color: #586069;
   --npadding: 1rem;
   --bpadding: 1.5rem;
   --spadding: 0.5rem;
   margin: 0;
-  color: #2C2E2F;
+  color: #2c2e2f;
+  font-size: 16px;
+  line-height: 150%;
 }
 
-.input-setting {
+/* General */
+
+.note {
+  @apply text-xs
+  py-1;
+}
+
+/* TextInput */
+:focus-visible {
+  outline: none;
+}
+
+.text-input {
+  @apply flex
+  flex-col
+  my-[1rem]
+  w-[45vw];
+}
+
+.text-input__part {
+  @apply relative
+  h-[3.5rem];
+}
+
+.text-input__input {
   @apply p-[var(--npadding)]
   rounded
   border
   border-[#444D56]
-  box-border;
+  box-border
+  absolute
+  w-full
+  top-0
+  left-0;
 }
 
-.focus {
+.text-input__input:not(:placeholder-shown) {
+  @apply px-[var(--npadding)]
+    pt-[var(--bpadding)]
+    pb-[var(--spadding)];
+}
+
+.text-input__inputng:not(:placeholder-shown):focus-visible {
+  @apply px-[calc(var(--npadding)-1px)]
+    pt-[calc(var(--bpadding)-1px)]
+    pb-[calc(var(--spadding)-1px)];
+}
+
+.text-input__input::placeholder {
+  @apply text-placeholderColor;
+  transition: color 0ms 150ms;
+}
+
+.text-input__input:focus::placeholder {
+  color: transparent;
+  transition: color 0ms 0ms;
+}
+
+.text-input__input:focus {
   @apply focus:border-2
-  focus:border-focusColor
+    focus:rounded
+  focus:border-mainBlue
     focus:box-border
-    focus:pl-[calc(var(--npadding)-1px)]
-    focus:pr-[calc(var(--npadding)-1px)]
+    focus:px-[calc(var(--npadding)-1px)]
     focus:pt-[calc(var(--bpadding)-1px)]
     focus:pb-[calc(var(--spadding)-1px)];
 }
 
-code {
+.label {
+  @apply mx-0
+  mt-1
+  mb-0 
+  text-left
+  absolute
+  top-[calc(var(--npadding)-1px)]
+  left-4
+  z-10
+  opacity-0
+  pointer-events-none;
+  transition: top 150ms ease-in, font-size 150ms ease-in, opacity 0ms 150ms;
+}
+
+.text-input__input:focus-visible + .label {
+  @apply top-1
+  left-4
+  text-xs
+  opacity-100;
+  transition: top 150ms ease-in, font-size 150ms ease-in, opacity 0s;
+}
+
+.text-input__input:not(:placeholder-shown) + .label {
+  @apply top-1
+  left-4
+  text-xs
+  opacity-100;
+}
+
+
+/* Text Area */
+.text-area {
+  @apply relative
+  w-full
+  h-40;
+}
+
+.text-area__label {
+  @apply absolute
+  top-2
+  left-4
+  z-10
+  text-xs;
+}
+
+.text-area__area {
+  @apply absolute
+  top-0
+  left-0
+  w-full
+  h-full
+  py-8
+  px-4
+  border
+  border-borderColor
+  box-border
+  rounded
+  resize-none
+  overflow-y-hidden;
+}
+
+.text-area__area:focus {
+  @apply border-2
+  border-mainBlue
+  box-border
+  rounded
+  py-[calc(2rem-1px)]
+  px-[calc(1rem-1px)];
+ 
+}
+
+.text-area__area::placeholder{
+  @apply text-placeholderColor;
+}
+
+/* Select box */
+.select-box {
+  @apply relative
+  text-left;
+}
+
+.select-box label {
+  @apply absolute
+  top-[var(--spadding)]
+  left-[var(--npadding)]
+  text-xs
+  pointer-events-none;
+}
+
+select {
+  @apply w-[200px]
+  pt-6 
+  pr-14
+  pb-2
+  pl-4
+  border
+  border-borderColor
+  box-border
+  rounded
+  appearance-none
+  text-left
+  bg-white;
+  background-image: url("./icons/arrow_down.svg");
+  background-repeat: no-repeat;
+  background-position-x: calc(100% - 1rem);
+  background-position-y: 1.5rem;
+  background-size: 24px 24px;
+}
+
+select:focus {
+  border: 2px solid #0366d6;
+  box-sizing: border-box;
+  border-radius: 3px;
+  padding: calc(1.5rem - 1px) calc(3.5rem - 1px) calc(0.5rem - 1px) calc(1rem - 1px);
+}
+
+select:active {
+  background-image: url("./icons/arrow_up.svg");
 }
