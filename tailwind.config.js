@@ -13,15 +13,15 @@ module.exports = {
     extend: {
       height: {
         '85vh': '85vh',
-      }
+      },
+      colors: {
+        'mainBlue' : '#0366d6',
+        'placeholderColor': '#586069',
+        'textColor':'#2c2e2f',
+        'borderColor':'#444d56'
+      },
     },
-    colors: {
-      'mainBlue' : '#0366d6',
-      'placeholderColor': '#586069',
-      'textColor':'#2c2e2f',
-      'borderColor':'#444d56',
-      'white':'#ffffff'
-    }
+    
   },
   plugins: [],
 }
