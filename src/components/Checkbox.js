@@ -1,5 +1,4 @@
 import React from "react";
-import "./Checkbox.css";
 
 const Checkbox = (props) => {
     const checkboxChangeHandler = (event) => {

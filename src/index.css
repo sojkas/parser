@@ -5,7 +5,13 @@
 body {
   --npadding: 1rem;
   --bpadding: 1.5rem;
+  --dnpadding: 2rem;
+  --xbpadding:3.5rem;
   --spadding: 0.5rem;
+  --xspadding: 0.25rem;
+  --iconsizex: 24px;
+  --iconsizey: 24px;
+  --animation-duration: 300ms;
   margin: 0;
   color: #2c2e2f;
   font-size: 16px;
@@ -19,9 +25,20 @@ body {
   py-1;
 }
 
+.input-window__form {
+  @apply flex
+  flex-col;
+}
+
+.input-window__actions {
+  @apply flex
+  flex-row
+  justify-center;
+}
+
 /* TextInput */
 :focus-visible {
-  outline: none;
+  @apply outline-none;
 }
 
 .text-input {
@@ -33,51 +50,57 @@ body {
 
 .text-input__part {
   @apply relative
-  h-[3.5rem];
+  h-[3rem];
 }
 
 .text-input__input {
-  @apply p-[var(--npadding)]
+  @apply p-[calc(var(--npadding))]
   rounded
   border
   border-[#444D56]
   box-border
   absolute
   w-full
+  h-full
   top-0
   left-0;
 }
 
 .text-input__input:not(:placeholder-shown) {
-  @apply px-[var(--npadding)]
-    pt-[var(--bpadding)]
-    pb-[var(--spadding)];
+  @apply px-[calc(var(--npadding)+1px)]
+    pt-[calc(var(--bpadding)+1px)]
+    pb-[calc(var(--spadding)+1px)];
 }
 
-.text-input__inputng:not(:placeholder-shown):focus-visible {
-  @apply px-[calc(var(--npadding)-1px)]
-    pt-[calc(var(--bpadding)-1px)]
-    pb-[calc(var(--spadding)-1px)];
+.text-input__inputng:not(:placeholder-shown):focus {
+  @apply px-[calc(var(--npadding))]
+    pt-[calc(var(--bpadding))]
+    pb-[calc(var(--spadding))];
 }
 
 .text-input__input::placeholder {
-  @apply text-placeholderColor;
-  transition: color 0ms 150ms;
+  @apply text-placeholderColor
+  absolute
+  top-[calc(var(--npadding)-1px)]
+  left-[calc(var(--npadding)-1px)]
+  ;
+  transition: color 0ms var(--animation-duration), top 0ms var(--animation-duration), left 0ms var(--animation-duration);
 }
 
 .text-input__input:focus::placeholder {
+  @apply top-[calc(var(--npadding)-1px)]
+  left-[calc(var(--npadding)-1px)];
   color: transparent;
-  transition: color 0ms 0ms;
+  transition: color 0ms 0ms, top 0ms 0ms, left 0ms 0ms;
 }
 
 .text-input__input:focus {
   @apply focus:border-2
     focus:rounded
   focus:border-mainBlue
-    focus:box-border
     focus:px-[calc(var(--npadding)-1px)]
-    focus:pt-[calc(var(--bpadding)-1px)]
-    focus:pb-[calc(var(--spadding)-1px)];
+    focus:pt-[calc(var(--bpadding))]
+    focus:pb-[calc(var(--spadding))];
 }
 
 .label {
@@ -86,27 +109,59 @@ body {
   mb-0 
   text-left
   absolute
-  top-[calc(var(--npadding)-1px)]
-  left-4
+  top-[calc(var(--npadding)-7px)]
+  left-[calc(var(--npadding))]
   z-10
   opacity-0
   pointer-events-none;
-  transition: top 150ms ease-in, font-size 150ms ease-in, opacity 0ms 150ms;
+  /* animation: labelAnimationDown var(--animation-duration);
+  transition: opacity 0ms var(--animation-duration); */
+  
+  transition: top var(--animation-duration) ease-in, font-size var(--animation-duration) ease-in, opacity 0ms var(--animation-duration);
+ 
 }
 
-.text-input__input:focus-visible + .label {
-  @apply top-1
-  left-4
+.text-input__input:focus + .label {
+  @apply top-[calc(var(--xspadding))]
+  left-[calc(var(--npadding))]
   text-xs
   opacity-100;
-  transition: top 150ms ease-in, font-size 150ms ease-in, opacity 0s;
+  transition: top var(--animation-duration) ease-in, font-size var(--animation-duration) ease-in, opacity 0s;
+  /* animation: labelAnimationUp var(--animation-duration);
+  transition: opacity 0s; */
 }
 
 .text-input__input:not(:placeholder-shown) + .label {
-  @apply top-1
-  left-4
+  @apply top-[calc(var(--xspadding))]
+  left-[calc(var(--npadding))]
   text-xs
   opacity-100;
+}
+
+@keyframes labelAnimationUp{
+  0% {
+    @apply top-[calc(var(--npadding)-7px)]
+    left-[calc(var(--npadding))]
+    text-base;
+  }
+  100% {
+    @apply top-[calc(var(--xspadding))]
+    left-[calc(var(--npadding))]
+    text-xs;
+  }
+}
+
+@keyframes labelAnimationDown{
+  0% {
+    @apply top-[calc(var(--xspadding))]
+    left-[calc(var(--npadding)-1px)]
+    text-xs;
+  }
+  100% {
+    @apply top-[calc(var(--npadding)-7px)]
+    left-[calc(var(--npadding))]
+    text-base;
+  }
 }
 
 
@@ -146,8 +201,8 @@ body {
   border-mainBlue
   box-border
   rounded
-  py-[calc(2rem-1px)]
-  px-[calc(1rem-1px)];
+  py-[calc(var(--dnpadding)-1px)]
+  px-[calc(var(--npadding)-1px)];
  
 }
 
@@ -171,10 +226,10 @@ body {
 
 select {
   @apply w-[200px]
-  pt-6 
-  pr-14
-  pb-2
-  pl-4
+  pt-[var(--bpadding)] 
+  pr-[var(--xbpadding)]
+  pb-[var(--spadding)]
+  pl-[var(--npadding)]
   border
   border-borderColor
   box-border
@@ -184,18 +239,95 @@ select {
   bg-white;
   background-image: url("./icons/arrow_down.svg");
   background-repeat: no-repeat;
-  background-position-x: calc(100% - 1rem);
-  background-position-y: 1.5rem;
-  background-size: 24px 24px;
+  background-position-x: calc(100% - (var(--npadding)) - 1px);
+  background-position-y: calc(var(--bpadding) + 1px);
+  background-size: var(--iconsizex) var(--iconsizey);
 }
 
 select:focus {
-  border: 2px solid #0366d6;
-  box-sizing: border-box;
-  border-radius: 3px;
-  padding: calc(1.5rem - 1px) calc(3.5rem - 1px) calc(0.5rem - 1px) calc(1rem - 1px);
+  @apply border-2
+  box-border
+  border-mainBlue
+  rounded
+  pt-[calc(var(--bpadding)-1px)] 
+  pr-[calc(var(--xbpadding)-1px)]
+  pb-[calc(var(--spadding)-1px)]
+  pl-[calc(var(--npadding)-1px)];
+  background-position-x: calc(100% - (var(--npadding)));
+  background-position-y: calc(var(--bpadding));
 }
 
 select:active {
   background-image: url("./icons/arrow_up.svg");
+}
+
+/* Checkbox */
+
+.checkbox-all {
+  @apply flex
+  flex-row
+  text-left
+  ml-[var(--npadding)]
+  p-[5px]
+  relative;
+}
+
+input[type="checkbox"]:disabled + .checkbox-all__span {
+  @apply border-2
+  border-[#D1D5DA]
+  box-border
+  rounded;
+}
+
+.checkbox-all p {
+  @apply ml-[2.2rem];
+}
+
+.checkbox-all input {
+  @apply mt-[.33rem];    
+}
+
+.checkbox-all:hover .checkbox-all__span {
+  @apply border-2
+  border-mainBlue
+  rounded
+  box-border;
+}
+
+.checkbox-all:hover .checkbox-all__span::after {
+  @apply top-[-2px]
+  left-[-2px];
+}
+
+.checkbox-all__span {
+  @apply absolute
+  top-[0.3rem]
+  left-[var(--spadding)]
+  inline-block
+  border
+  border-black
+  box-border
+  rounded
+  w-[var(--iconsizex)]
+  h-[var(--iconsizey)];
+}
+
+input[type="checkbox"]{
+  @apply w-0
+  h-0
+  opacity-0;
+}
+
+input[type="checkbox"]:checked + span:after {
+  content: "";
+  background-image: url('./icons/checked.svg');
+  @apply bg-mainBlue
+  bg-cover
+  bg-no-repeat
+  rounded
+  absolute
+  top-[-1px]
+  left-[-1px]
+  w-[var(--iconsizex)]
+  h-[var(--iconsizey)];
 }

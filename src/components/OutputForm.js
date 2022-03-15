@@ -1,5 +1,4 @@
 import React from "react";
-import "./OutputForm.css";
 
 const OutputForm = (props) => {
     

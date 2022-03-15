@@ -1,5 +1,4 @@
 import React from "react";
-import "./StringOption.css";
 
 const StringOption = (props) => {
   const selectString = (event) => {

@@ -1,5 +1,4 @@
 import React from "react";
-import "./InputForm.css";
 
 const InputForm = (props) => {
   const title = "Sem patří blok textu:";

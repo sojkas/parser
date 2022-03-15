@@ -20,6 +20,18 @@ module.exports = {
         'textColor':'#2c2e2f',
         'borderColor':'#444d56'
       },
+      transitionProperty: {
+        'inputLabelAnimation': 'color, top',
+        'inputLabelOpacity':'opacity'
+      },
+      transitionDuration: {
+        '0':'0ms'
+      },
+      backgroundImage: {
+        'checked':'url("/src/icons/checked.svg")',
+        'arrow-down':'url("/src/icons/arrow_down.svg")',
+        'arrow-up':'url("/src/icons/arrow_up.svg")'
+      }
     },
     
   },

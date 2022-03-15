@@ -506,7 +506,13 @@ Ensure the default browser behavior of the `hidden` attribute.
 body {
   --npadding: 1rem;
   --bpadding: 1.5rem;
+  --dnpadding: 2rem;
+  --xbpadding:3.5rem;
   --spadding: 0.5rem;
+  --xspadding: 0.25rem;
+  --iconsizex: 24px;
+  --iconsizey: 24px;
+  --animation-duration: 300ms;
   margin: 0;
   color: #2c2e2f;
   font-size: 16px;
@@ -522,10 +528,22 @@ body {
   line-height: 1rem;
 }
 
+.input-window__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-window__actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 /* TextInput */
 
 :focus-visible {
-  outline: none;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
 .text-input {
@@ -538,7 +556,7 @@ body {
 
 .text-input__part {
   position: relative;
-  height: 3.5rem;
+  height: 3rem;
 }
 
 .text-input__input {
@@ -546,96 +564,111 @@ body {
   top: 0px;
   left: 0px;
   box-sizing: border-box;
+  height: 100%;
   width: 100%;
   border-radius: 3px;
   border-width: 1px;
   --tw-border-opacity: 1;
   border-color: rgb(68 77 86 / var(--tw-border-opacity));
-  padding: var(--npadding);
+  padding: calc(var(--npadding));
 }
 
 .text-input__input:not(:-ms-input-placeholder) {
-  padding-left: var(--npadding);
-  padding-right: var(--npadding);
-  padding-top: var(--bpadding);
-  padding-bottom: var(--spadding);
+  padding-left: calc(var(--npadding) + 1px);
+  padding-right: calc(var(--npadding) + 1px);
+  padding-top: calc(var(--bpadding) + 1px);
+  padding-bottom: calc(var(--spadding) + 1px);
 }
 
 .text-input__input:not(:placeholder-shown) {
-  padding-left: var(--npadding);
-  padding-right: var(--npadding);
-  padding-top: var(--bpadding);
-  padding-bottom: var(--spadding);
+  padding-left: calc(var(--npadding) + 1px);
+  padding-right: calc(var(--npadding) + 1px);
+  padding-top: calc(var(--bpadding) + 1px);
+  padding-bottom: calc(var(--spadding) + 1px);
 }
 
-.text-input__inputng:not(:-ms-input-placeholder):focus-visible {
-  padding-left: calc(var(--npadding) - 1px);
-  padding-right: calc(var(--npadding) - 1px);
-  padding-top: calc(var(--bpadding) - 1px);
-  padding-bottom: calc(var(--spadding) - 1px);
+.text-input__inputng:not(:-ms-input-placeholder):focus {
+  padding-left: calc(var(--npadding));
+  padding-right: calc(var(--npadding));
+  padding-top: calc(var(--bpadding));
+  padding-bottom: calc(var(--spadding));
 }
 
-.text-input__inputng:not(:placeholder-shown):focus-visible {
-  padding-left: calc(var(--npadding) - 1px);
-  padding-right: calc(var(--npadding) - 1px);
-  padding-top: calc(var(--bpadding) - 1px);
-  padding-bottom: calc(var(--spadding) - 1px);
+.text-input__inputng:not(:placeholder-shown):focus {
+  padding-left: calc(var(--npadding));
+  padding-right: calc(var(--npadding));
+  padding-top: calc(var(--bpadding));
+  padding-bottom: calc(var(--spadding));
 }
 
 .text-input__input::-webkit-input-placeholder {
+  position: absolute;
+  top: calc(var(--npadding) - 1px);
+  left: calc(var(--npadding) - 1px);
   --tw-text-opacity: 1;
   color: rgb(88 96 105 / var(--tw-text-opacity));
-  -webkit-transition: color 0ms 150ms;
-  transition: color 0ms 150ms;
+  -webkit-transition: color 0ms var(--animation-duration), top 0ms var(--animation-duration), left 0ms var(--animation-duration);
+  transition: color 0ms var(--animation-duration), top 0ms var(--animation-duration), left 0ms var(--animation-duration);
 }
 
 .text-input__input:-ms-input-placeholder {
+  position: absolute;
+  top: calc(var(--npadding) - 1px);
+  left: calc(var(--npadding) - 1px);
   --tw-text-opacity: 1;
   color: rgb(88 96 105 / var(--tw-text-opacity));
-  -ms-transition: color 0ms 150ms;
-  transition: color 0ms 150ms;
+  -ms-transition: color 0ms var(--animation-duration), top 0ms var(--animation-duration), left 0ms var(--animation-duration);
+  transition: color 0ms var(--animation-duration), top 0ms var(--animation-duration), left 0ms var(--animation-duration);
 }
 
 .text-input__input::placeholder {
+  position: absolute;
+  top: calc(var(--npadding) - 1px);
+  left: calc(var(--npadding) - 1px);
   --tw-text-opacity: 1;
   color: rgb(88 96 105 / var(--tw-text-opacity));
-  transition: color 0ms 150ms;
+  transition: color 0ms var(--animation-duration), top 0ms var(--animation-duration), left 0ms var(--animation-duration);
 }
 
 .text-input__input:focus::-webkit-input-placeholder {
+  top: calc(var(--npadding) - 1px);
+  left: calc(var(--npadding) - 1px);
   color: transparent;
-  -webkit-transition: color 0ms 0ms;
-  transition: color 0ms 0ms;
+  -webkit-transition: color 0ms 0ms, top 0ms 0ms, left 0ms 0ms;
+  transition: color 0ms 0ms, top 0ms 0ms, left 0ms 0ms;
 }
 
 .text-input__input:focus:-ms-input-placeholder {
+  top: calc(var(--npadding) - 1px);
+  left: calc(var(--npadding) - 1px);
   color: transparent;
-  -ms-transition: color 0ms 0ms;
-  transition: color 0ms 0ms;
+  -ms-transition: color 0ms 0ms, top 0ms 0ms, left 0ms 0ms;
+  transition: color 0ms 0ms, top 0ms 0ms, left 0ms 0ms;
 }
 
 .text-input__input:focus::placeholder {
+  top: calc(var(--npadding) - 1px);
+  left: calc(var(--npadding) - 1px);
   color: transparent;
-  transition: color 0ms 0ms;
+  transition: color 0ms 0ms, top 0ms 0ms, left 0ms 0ms;
 }
 
 .text-input__input:focus:focus {
-  box-sizing: border-box;
   border-radius: 3px;
   border-width: 2px;
   --tw-border-opacity: 1;
   border-color: rgb(3 102 214 / var(--tw-border-opacity));
   padding-left: calc(var(--npadding) - 1px);
   padding-right: calc(var(--npadding) - 1px);
-  padding-top: calc(var(--bpadding) - 1px);
-  padding-bottom: calc(var(--spadding) - 1px);
+  padding-top: calc(var(--bpadding));
+  padding-bottom: calc(var(--spadding));
 }
 
 .label {
   pointer-events: none;
   position: absolute;
-  top: calc(var(--npadding) - 1px);
-  left: 1rem;
+  top: calc(var(--npadding) - 7px);
+  left: calc(var(--npadding));
   z-index: 10;
   margin-left: 0px;
   margin-right: 0px;
@@ -643,32 +676,148 @@ body {
   margin-bottom: 0px;
   text-align: left;
   opacity: 0;
-  transition: top 150ms ease-in, font-size 150ms ease-in, opacity 0ms 150ms;
+  /* animation: labelAnimationDown var(--animation-duration);
+  transition: opacity 0ms var(--animation-duration); */
+  transition: top var(--animation-duration) ease-in, font-size var(--animation-duration) ease-in, opacity 0ms var(--animation-duration);
 }
 
-.text-input__input:focus-visible + .label {
-  top: 0.25rem;
-  left: 1rem;
+.text-input__input:focus + .label {
+  top: calc(var(--xspadding));
+  left: calc(var(--npadding));
   font-size: 0.75rem;
   line-height: 1rem;
   opacity: 1;
-  transition: top 150ms ease-in, font-size 150ms ease-in, opacity 0s;
+  transition: top var(--animation-duration) ease-in, font-size var(--animation-duration) ease-in, opacity 0s;
+  /* animation: labelAnimationUp var(--animation-duration);
+  transition: opacity 0s; */
 }
 
 .text-input__input:not(:-ms-input-placeholder) + .label {
-  top: 0.25rem;
-  left: 1rem;
+  top: calc(var(--xspadding));
+  left: calc(var(--npadding));
   font-size: 0.75rem;
   line-height: 1rem;
   opacity: 1;
 }
 
 .text-input__input:not(:placeholder-shown) + .label {
-  top: 0.25rem;
-  left: 1rem;
+  top: calc(var(--xspadding));
+  left: calc(var(--npadding));
   font-size: 0.75rem;
   line-height: 1rem;
   opacity: 1;
+}
+
+@-webkit-keyframes labelAnimationUp{
+  0% {
+    top: calc(var(--npadding) - 7px);
+  }
+
+  0% {
+    left: calc(var(--npadding));
+  }
+
+  0% {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  100% {
+    top: calc(var(--xspadding));
+  }
+
+  100% {
+    left: calc(var(--npadding));
+  }
+
+  100% {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+}
+
+@keyframes labelAnimationUp{
+  0% {
+    top: calc(var(--npadding) - 7px);
+  }
+
+  0% {
+    left: calc(var(--npadding));
+  }
+
+  0% {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  100% {
+    top: calc(var(--xspadding));
+  }
+
+  100% {
+    left: calc(var(--npadding));
+  }
+
+  100% {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+}
+
+@-webkit-keyframes labelAnimationDown{
+  0% {
+    top: calc(var(--xspadding));
+  }
+
+  0% {
+    left: calc(var(--npadding) - 1px);
+  }
+
+  0% {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+
+  100% {
+    top: calc(var(--npadding) - 7px);
+  }
+
+  100% {
+    left: calc(var(--npadding));
+  }
+
+  100% {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+@keyframes labelAnimationDown{
+  0% {
+    top: calc(var(--xspadding));
+  }
+
+  0% {
+    left: calc(var(--npadding) - 1px);
+  }
+
+  0% {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+
+  100% {
+    top: calc(var(--npadding) - 7px);
+  }
+
+  100% {
+    left: calc(var(--npadding));
+  }
+
+  100% {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
 }
 
 /* Text Area */
@@ -713,10 +862,10 @@ body {
   border-width: 2px;
   --tw-border-opacity: 1;
   border-color: rgb(3 102 214 / var(--tw-border-opacity));
-  padding-top: calc(2rem - 1px);
-  padding-bottom: calc(2rem - 1px);
-  padding-left: calc(1rem - 1px);
-  padding-right: calc(1rem - 1px);
+  padding-top: calc(var(--dnpadding) - 1px);
+  padding-bottom: calc(var(--dnpadding) - 1px);
+  padding-left: calc(var(--npadding) - 1px);
+  padding-right: calc(var(--npadding) - 1px);
 }
 
 .text-area__area::-webkit-input-placeholder {
@@ -761,25 +910,107 @@ select {
   border-color: rgb(68 77 86 / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-  padding-top: 1.5rem;
-  padding-right: 3.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 1rem;
+  padding-top: var(--bpadding);
+  padding-right: var(--xbpadding);
+  padding-bottom: var(--spadding);
+  padding-left: var(--npadding);
   text-align: left;
   background-image: url("./icons/arrow_down.svg");
   background-repeat: no-repeat;
-  background-position-x: calc(100% - 1rem);
-  background-position-y: 1.5rem;
-  background-size: 24px 24px;
+  background-position-x: calc(100% - (var(--npadding)) - 1px);
+  background-position-y: calc(var(--bpadding) + 1px);
+  background-size: var(--iconsizex) var(--iconsizey);
 }
 
 select:focus {
-  border: 2px solid #0366d6;
   box-sizing: border-box;
   border-radius: 3px;
-  padding: calc(1.5rem - 1px) calc(3.5rem - 1px) calc(0.5rem - 1px) calc(1rem - 1px);
+  border-width: 2px;
+  --tw-border-opacity: 1;
+  border-color: rgb(3 102 214 / var(--tw-border-opacity));
+  padding-top: calc(var(--bpadding) - 1px);
+  padding-right: calc(var(--xbpadding) - 1px);
+  padding-bottom: calc(var(--spadding) - 1px);
+  padding-left: calc(var(--npadding) - 1px);
+  background-position-x: calc(100% - (var(--npadding)));
+  background-position-y: calc(var(--bpadding));
 }
 
 select:active {
   background-image: url("./icons/arrow_up.svg");
+}
+
+/* Checkbox */
+
+.checkbox-all {
+  position: relative;
+  margin-left: var(--npadding);
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  text-align: left;
+}
+
+input[type="checkbox"]:disabled + .checkbox-all__span {
+  box-sizing: border-box;
+  border-radius: 3px;
+  border-width: 2px;
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 218 / var(--tw-border-opacity));
+}
+
+.checkbox-all p {
+  margin-left: 2.2rem;
+}
+
+.checkbox-all input {
+  margin-top: .33rem;
+}
+
+.checkbox-all:hover .checkbox-all__span {
+  box-sizing: border-box;
+  border-radius: 3px;
+  border-width: 2px;
+  --tw-border-opacity: 1;
+  border-color: rgb(3 102 214 / var(--tw-border-opacity));
+}
+
+.checkbox-all:hover .checkbox-all__span::after {
+  top: -2px;
+  left: -2px;
+}
+
+.checkbox-all__span {
+  position: absolute;
+  top: 0.3rem;
+  left: var(--spadding);
+  box-sizing: border-box;
+  display: inline-block;
+  height: var(--iconsizey);
+  width: var(--iconsizex);
+  border-radius: 3px;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+}
+
+input[type="checkbox"] {
+  height: 0px;
+  width: 0px;
+  opacity: 0;
+}
+
+input[type="checkbox"]:checked + span:after {
+  content: "";
+  background-image: url('./icons/checked.svg');
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  height: var(--iconsizey);
+  width: var(--iconsizex);
+  border-radius: 3px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(3 102 214 / var(--tw-bg-opacity));
+  background-size: cover;
+  background-repeat: no-repeat;
 }

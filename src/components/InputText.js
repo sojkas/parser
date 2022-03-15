@@ -1,5 +1,4 @@
 import React from "react";
-import "./InputText.css";
 
 const InputText = (props) => {
   const onTextTypeHandler = (event) => {
