@@ -67,9 +67,9 @@ body {
 }
 
 .text-input__input:not(:placeholder-shown) {
-  @apply px-[calc(var(--npadding)+1px)]
-    pt-[calc(var(--bpadding)+1px)]
-    pb-[calc(var(--spadding)+1px)];
+  @apply px-[calc(var(--npadding))]
+    pt-[calc(var(--bpadding))]
+    pb-[calc(var(--spadding))];
 }
 
 .text-input__inputng:not(:placeholder-shown):focus {

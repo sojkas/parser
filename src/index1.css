@@ -574,17 +574,17 @@ body {
 }
 
 .text-input__input:not(:-ms-input-placeholder) {
-  padding-left: calc(var(--npadding) + 1px);
-  padding-right: calc(var(--npadding) + 1px);
-  padding-top: calc(var(--bpadding) + 1px);
-  padding-bottom: calc(var(--spadding) + 1px);
+  padding-left: calc(var(--npadding));
+  padding-right: calc(var(--npadding));
+  padding-top: calc(var(--bpadding));
+  padding-bottom: calc(var(--spadding));
 }
 
 .text-input__input:not(:placeholder-shown) {
-  padding-left: calc(var(--npadding) + 1px);
-  padding-right: calc(var(--npadding) + 1px);
-  padding-top: calc(var(--bpadding) + 1px);
-  padding-bottom: calc(var(--spadding) + 1px);
+  padding-left: calc(var(--npadding));
+  padding-right: calc(var(--npadding));
+  padding-top: calc(var(--bpadding));
+  padding-bottom: calc(var(--spadding));
 }
 
 .text-input__inputng:not(:-ms-input-placeholder):focus {
