@@ -13,6 +13,7 @@ const StringOption = (props) => {
         <option value=";">;</option>
         <option value="|">|</option>
       </select>
+      <div className="select-icon"></div>
     </div>
   );
 };

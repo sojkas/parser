@@ -25,6 +25,13 @@ body {
   py-1;
 }
 
+.note__puvodni {
+  font-size: 0.75rem/* 12px */;
+  line-height: 1rem/* 16px */;
+  padding-top: 0.25rem/* 4px */;
+  padding-bottom: 0.25rem/* 4px */;
+}
+
 .input-window__form {
   @apply flex
   flex-col;
@@ -237,11 +244,26 @@ select {
   appearance-none
   text-left
   bg-white;
+  
+}
+
+.select-icon {
+  @apply w-[var(--iconsizex)]
+  h-[var(--iconsizey)]
+  bg-cover 
+  bg-white
+  bg-no-repeat
+  absolute
+  right-[var(--npadding)]
+  bottom-[var(--spadding)]
+  ;
   background-image: url("./icons/arrow_down.svg");
-  background-repeat: no-repeat;
-  background-position-x: calc(100% - (var(--npadding)) - 1px);
-  background-position-y: calc(var(--bpadding) + 1px);
-  background-size: var(--iconsizex) var(--iconsizey);
+  transition: transform var(--animation-duration);
+}
+
+select:active + .select-icon {
+  transform: rotate(180deg);
+  transition: transform var(--animation-duration);
 }
 
 select:focus {
@@ -255,10 +277,6 @@ select:focus {
   pl-[calc(var(--npadding)-1px)];
   background-position-x: calc(100% - (var(--npadding)));
   background-position-y: calc(var(--bpadding));
-}
-
-select:active {
-  background-image: url("./icons/arrow_up.svg");
 }
 
 /* Checkbox */
