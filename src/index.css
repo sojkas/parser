@@ -73,9 +73,9 @@ body {
 }
 
 .text-input__inputng:not(:placeholder-shown):focus {
-  @apply px-[calc(var(--npadding))]
-    pt-[calc(var(--bpadding))]
-    pb-[calc(var(--spadding))];
+  @apply px-[calc(var(--npadding)-1px)]
+    pt-[calc(var(--bpadding)-1px)]
+    pb-[calc(var(--spadding)-1px)];
 }
 
 .text-input__input::placeholder {
