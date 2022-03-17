@@ -528,13 +528,6 @@ body {
   line-height: 1rem;
 }
 
-.note__puvodni {
-  font-size: 0.75rem/* 12px */;
-  line-height: 1rem/* 16px */;
-  padding-top: 0.25rem/* 4px */;
-  padding-bottom: 0.25rem/* 4px */;
-}
-
 .input-window__form {
   display: flex;
   flex-direction: column;
