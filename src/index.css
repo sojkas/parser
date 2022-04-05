@@ -193,7 +193,7 @@ body {
   box-border
   rounded
   resize-none
-  overflow-y-hidden;
+  overflow-y-scroll;
 }
 
 .text-area__area:focus {

@@ -845,7 +845,7 @@ body {
   height: 100%;
   width: 100%;
   resize: none;
-  overflow-y: hidden;
+  overflow-y: scroll;
   border-radius: 3px;
   border-width: 1px;
   --tw-border-opacity: 1;
