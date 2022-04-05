@@ -513,6 +513,8 @@ body {
   --iconsizex: 24px;
   --iconsizey: 24px;
   --animation-duration: 300ms;
+  --borderWidth: 1px;
+  --borderWidthFocus: 2px;
   margin: 0;
   color: #2c2e2f;
   font-size: 16px;
@@ -588,23 +590,23 @@ body {
 }
 
 .text-input__inputng:not(:-ms-input-placeholder):focus {
-  padding-left: calc(var(--npadding) - 1px);
-  padding-right: calc(var(--npadding) - 1px);
-  padding-top: calc(var(--bpadding) - 1px);
-  padding-bottom: calc(var(--spadding) - 1px);
+  padding-left: calc(var(--npadding) - (var(--borderWidthFocus) - var(--borderWidth)));
+  padding-right: calc(var(--npadding) - (var(--borderWidthFocus) - var(--borderWidth)));
+  padding-top: calc(var(--bpadding) - (var(--borderWidthFocus) - var(--borderWidth)));
+  padding-bottom: calc(var(--spadding) - (var(--borderWidthFocus) - var(--borderWidth)));
 }
 
 .text-input__inputng:not(:placeholder-shown):focus {
-  padding-left: calc(var(--npadding) - 1px);
-  padding-right: calc(var(--npadding) - 1px);
-  padding-top: calc(var(--bpadding) - 1px);
-  padding-bottom: calc(var(--spadding) - 1px);
+  padding-left: calc(var(--npadding) - (var(--borderWidthFocus) - var(--borderWidth)));
+  padding-right: calc(var(--npadding) - (var(--borderWidthFocus) - var(--borderWidth)));
+  padding-top: calc(var(--bpadding) - (var(--borderWidthFocus) - var(--borderWidth)));
+  padding-bottom: calc(var(--spadding) - (var(--borderWidthFocus) - var(--borderWidth)));
 }
 
 .text-input__input::-webkit-input-placeholder {
   position: absolute;
-  top: calc(var(--npadding) - 1px);
-  left: calc(var(--npadding) - 1px);
+  top: calc(var(--npadding) - (var(--borderWidthFocus) - var(--borderWidth)));
+  left: calc(var(--npadding) - (var(--borderWidthFocus) - var(--borderWidth)));
   --tw-text-opacity: 1;
   color: rgb(88 96 105 / var(--tw-text-opacity));
   -webkit-transition: color 0ms var(--animation-duration), top 0ms var(--animation-duration), left 0ms var(--animation-duration);
@@ -613,8 +615,8 @@ body {
 
 .text-input__input:-ms-input-placeholder {
   position: absolute;
-  top: calc(var(--npadding) - 1px);
-  left: calc(var(--npadding) - 1px);
+  top: calc(var(--npadding) - (var(--borderWidthFocus) - var(--borderWidth)));
+  left: calc(var(--npadding) - (var(--borderWidthFocus) - var(--borderWidth)));
   --tw-text-opacity: 1;
   color: rgb(88 96 105 / var(--tw-text-opacity));
   -ms-transition: color 0ms var(--animation-duration), top 0ms var(--animation-duration), left 0ms var(--animation-duration);
@@ -623,32 +625,32 @@ body {
 
 .text-input__input::placeholder {
   position: absolute;
-  top: calc(var(--npadding) - 1px);
-  left: calc(var(--npadding) - 1px);
+  top: calc(var(--npadding) - (var(--borderWidthFocus) - var(--borderWidth)));
+  left: calc(var(--npadding) - (var(--borderWidthFocus) - var(--borderWidth)));
   --tw-text-opacity: 1;
   color: rgb(88 96 105 / var(--tw-text-opacity));
   transition: color 0ms var(--animation-duration), top 0ms var(--animation-duration), left 0ms var(--animation-duration);
 }
 
 .text-input__input:focus::-webkit-input-placeholder {
-  top: calc(var(--npadding) - 1px);
-  left: calc(var(--npadding) - 1px);
+  top: calc(var(--npadding) - (var(--borderWidthFocus) - var(--borderWidth)));
+  left: calc(var(--npadding) - (var(--borderWidthFocus) - var(--borderWidth)));
   color: transparent;
   -webkit-transition: color 0ms 0ms, top 0ms 0ms, left 0ms 0ms;
   transition: color 0ms 0ms, top 0ms 0ms, left 0ms 0ms;
 }
 
 .text-input__input:focus:-ms-input-placeholder {
-  top: calc(var(--npadding) - 1px);
-  left: calc(var(--npadding) - 1px);
+  top: calc(var(--npadding) - (var(--borderWidthFocus) - var(--borderWidth)));
+  left: calc(var(--npadding) - (var(--borderWidthFocus) - var(--borderWidth)));
   color: transparent;
   -ms-transition: color 0ms 0ms, top 0ms 0ms, left 0ms 0ms;
   transition: color 0ms 0ms, top 0ms 0ms, left 0ms 0ms;
 }
 
 .text-input__input:focus::placeholder {
-  top: calc(var(--npadding) - 1px);
-  left: calc(var(--npadding) - 1px);
+  top: calc(var(--npadding) - (var(--borderWidthFocus) - var(--borderWidth)));
+  left: calc(var(--npadding) - (var(--borderWidthFocus) - var(--borderWidth)));
   color: transparent;
   transition: color 0ms 0ms, top 0ms 0ms, left 0ms 0ms;
 }
@@ -658,8 +660,8 @@ body {
   border-width: 2px;
   --tw-border-opacity: 1;
   border-color: rgb(3 102 214 / var(--tw-border-opacity));
-  padding-left: calc(var(--npadding) - 1px);
-  padding-right: calc(var(--npadding) - 1px);
+  padding-left: calc(var(--npadding) - (var(--borderWidthFocus) - var(--borderWidth)));
+  padding-right: calc(var(--npadding) - (var(--borderWidthFocus) - var(--borderWidth)));
   padding-top: calc(var(--bpadding));
   padding-bottom: calc(var(--spadding));
 }
@@ -830,7 +832,7 @@ body {
 
 .text-area__label {
   position: absolute;
-  top: 1px;
+  top: var(--borderWidth);
   left: 1rem;
   z-index: 10;
   height: var(--bpadding);
@@ -844,8 +846,8 @@ body {
 
 .text-area__area:focus + .text-area__label {
   position: absolute;
-  top: 2px;
-  padding-top: calc(var(--spadding) - 1px);
+  top: var(--borderWidthFocus);
+  padding-top: calc(var(--spadding) - (var(--borderWidthFocus) - var(--borderWidth)));
 }
 
 .text-area__area {
@@ -873,10 +875,10 @@ body {
   border-width: 2px;
   --tw-border-opacity: 1;
   border-color: rgb(3 102 214 / var(--tw-border-opacity));
-  padding-top: calc(var(--dnpadding) - 1px);
-  padding-bottom: calc(var(--dnpadding) - 1px);
-  padding-left: calc(var(--npadding) - 1px);
-  padding-right: calc(var(--npadding) - 1px);
+  padding-top: calc(var(--dnpadding) - (var(--borderWidthFocus) - var(--borderWidth)));
+  padding-bottom: calc(var(--dnpadding) - (var(--borderWidthFocus) - var(--borderWidth)));
+  padding-left: calc(var(--npadding) - (var(--borderWidthFocus) - var(--borderWidth)));
+  padding-right: calc(var(--npadding) - (var(--borderWidthFocus) - var(--borderWidth)));
 }
 
 .text-area__area::-webkit-input-placeholder {
@@ -958,10 +960,10 @@ select:focus {
   border-width: 2px;
   --tw-border-opacity: 1;
   border-color: rgb(3 102 214 / var(--tw-border-opacity));
-  padding-top: calc(var(--bpadding) - 1px);
-  padding-right: calc(var(--xbpadding) - 1px);
-  padding-bottom: calc(var(--spadding) - 1px);
-  padding-left: calc(var(--npadding) - 1px);
+  padding-top: calc(var(--bpadding) - (var(--borderWidthFocus) - var(--borderWidth)));
+  padding-right: calc(var(--xbpadding) - (var(--borderWidthFocus) - var(--borderWidth)));
+  padding-bottom: calc(var(--spadding) - (var(--borderWidthFocus) - var(--borderWidth)));
+  padding-left: calc(var(--npadding) - (var(--borderWidthFocus) - var(--borderWidth)));
   background-position-x: calc(100% - (var(--npadding)));
   background-position-y: calc(var(--bpadding));
 }
