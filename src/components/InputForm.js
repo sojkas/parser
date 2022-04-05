@@ -12,13 +12,13 @@ const InputForm = (props) => {
 
   return (
     <div className="flex flex-column text-area">
-      <label className="text-area__label">{title}</label>
       <textarea
         className="text-area__area"
         placeholder={props.inputFormPlaceholder}
         onChange={submitSaveHandler}
         onPaste={submitOnPasteSaveHandler}
       />
+      <label className="text-area__label">{title}</label>
     </div>
   );
 };

@@ -5,8 +5,8 @@ const OutputForm = (props) => {
 
        return (
         <div className="text-area">
-            <label className="text-area__label">{props.outputTitle}</label>
             <textarea className="text-area__area" value={props.OutputString} readOnly/>
+            <label className="text-area__label">{props.outputTitle}</label>
         </div>
     )
 }
