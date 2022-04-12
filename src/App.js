@@ -167,22 +167,24 @@ function App() {
           /* setOutputDataWithString(customStringDataArray.join("\n")); */
         }
       } else {
-        let newArray = inputData.split(selectedStringInput);
-        let customStringData = customString;
+        let newArray = inputData.split(selectedStringInput);        
+        let customStringDataArray = [];
         if (isCheckedRemoveQuotationMark)
           newArray = prepareDataReplace(newArray, '"', "");
         if (isCheckedRemoveSpace) newArray = prepareDataTrim(newArray);
         if (isCheckedAddQuotationMark) newArray = prepareDataAdd(newArray);
         if (customString.length > 0) {
           for (const a in newArray) {
+            let customStringData = customString;
             customStringData = customStringData.replaceAll(
-              "{" + a + "}",
+              "{0}",
               newArray[a]
             );
+            customStringDataArray[a] = customStringData;
           }
         }
         if (customString.length > 0) {
-          setOutputData(customStringData);
+          setOutputData(customStringDataArray.join(selectedStringOutput));
         } else {
           setOutputData(newArray.join(selectedStringOutput));
         }

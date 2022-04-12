@@ -12,6 +12,9 @@ const StringOption = (props) => {
         <option value=",">,</option>
         <option value=";">;</option>
         <option value="|">|</option>
+        <option value=" OR ">OR</option>
+        <option value=" AND ">AND</option>
+        <option value=" ">SPACE</option>
       </select>
       <div className="select-icon"></div>
     </div>
